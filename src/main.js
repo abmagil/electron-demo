@@ -1,6 +1,6 @@
-const {app, BrowserWindow} = require('electron');
-const path = require('path');
-const url = require('url');
+import {app, BrowserWindow} from 'electron';
+import path from 'path';
+import url from 'url';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -8,7 +8,7 @@ let win;
 
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({width: 800, height: 600});
+  win = new BrowserWindow({width: 1000, height: 800});
 
   // and load the index.html of the app.
   win.loadURL(url.format({
@@ -16,6 +16,10 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }));
+
+
+
+  win.toggleDevTools();
 
   // Emitted when the window is closed.
   win.on('closed', () => {

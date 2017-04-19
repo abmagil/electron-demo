@@ -2,19 +2,22 @@
   "name": "electron-demo",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "dist/main.js",
   "scripts": {
-    "start": "electron main.js",
+    "start": "electron dist/main.js",
+    "build:watch": "webpack --watch",
     "test": "test"
   },
   "author": "Aaron Magil",
   "license": "ISC",
   "dependencies": {
     "electron": "^1.6.2",
-    "electron-prebuilt": "^1.4.13"
+    "electron-prebuilt": "^1.4.13",
+    "react": "^15.5.3"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
-    "eslint-plugin-react": "^6.10.3"
+    "eslint-plugin-react": "^6.10.3",
+    "webpack": "^2.3.3"
   }
 }
