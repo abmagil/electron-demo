@@ -1,0 +1,23 @@
+# Electron Demo
+
+This is a demo project, to familiarize myself with Electron. I will use Electron
+to wrap my existing spending-plan app.
+
+This will be a testbed for integrating electron with React and Redux, and an
+attempt to decouple my app from the NWB tool that was used to build it
+originally
+
+## Installation
+
+You must have [yarn](https://yarnpkg.com/en/docs/install)
+
+1. `git clone git@github.com:abmagil/electron-demo.git`
+1. yarn install
+
+## Usage
+
+`npm start` should launch the app in a form that can be used
+
+## License
+
+[ISC](https://opensource.org/licenses/ISC)
