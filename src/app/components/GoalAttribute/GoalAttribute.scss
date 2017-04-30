@@ -1,0 +1,20 @@
+.cell {
+  height: 1em;
+  margin: 0 10px;
+  min-width: 6em;
+  text-align: right;
+
+  .editable {
+    border: 1px solid transparent;
+    border-radius: 0 2px 2px 0;
+    padding: .3em;
+    text-align: left;
+    width: calc(75% - 1em);
+  }
+
+  .lock {
+    content: url('/app/assets/svg/unlocked.svg');
+    height: 0.75em;
+    padding-right: 1.25em;
+  }
+}

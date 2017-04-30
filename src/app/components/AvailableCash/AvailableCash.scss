@@ -1,0 +1,26 @@
+.availableCash {
+  border-radius: 0em 5% 5% 0;
+  margin-left: -20px;
+  padding: 5px 0 5px calc(20px + 120px + 200px);
+
+  &.veryLow {
+    background: linear-gradient(90deg, #0C2662, #BFF4DD),
+  }
+  &.onTrack {
+    background: linear-gradient(90deg, #5CD6A2, #BFF4DD),
+  }
+  &.tight {
+    background: linear-gradient(90deg, #F4F463, #BFF4DD),
+  }
+  &.over {
+    background: linear-gradient(90deg, #920303, #BFF4DD),
+  }
+
+  input {
+    border: 1px solid transparent;
+    border-radius: 2px;
+    margin-left: 1em;
+    padding: 2px 5px;
+    width: 9em;
+  }
+}

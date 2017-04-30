@@ -3,13 +3,33 @@ const path = require('path')
 const url = require('url')
 const { ipcMain } = require('electron')
 const { ipcRenderer } = require('electron')
+const {
+  default: installExtension,
+  REACT_DEVELOPER_TOOLS,
+  REDUX_DEVTOOLS,
+} = require('electron-devtools-installer');
+
+const showStyleguide = require('./styleguide')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
 function createWindow () {
-  win = new BrowserWindow({width: 1000, height: 800});
+  installExtension(REACT_DEVELOPER_TOOLS)
+      .then((name) => console.log(`Added Extension:  ${name}`))
+      .catch((err) => console.log('An error occurred: ', err));
+  installExtension(REDUX_DEVTOOLS)
+      .then((name) => console.log(`Added Extension:  ${name}`))
+      .catch((err) => console.log('An error occurred: ', err));
+
+  win = new BrowserWindow({
+    width: 1000,
+    height: 800,
+    fullscreen: true,
+    fullscrenable: false,
+    backgroundColor: '#2e2e2e'
+  });
 
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'renderer' ,'index.html'),
@@ -47,23 +67,5 @@ app.on('activate', () => {
 });
 
 ipcMain.on('open-style-guide', function (event, arg) {
-  const styleWindow = new BrowserWindow({
-    minHight: 400,
-    minWidth: 800,
-    useContentSize: true,
-    backgroundColor: '#FFF',
-    titleBarStyle: 'hidden'
-  });
-
-  styleWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'renderer' ,'styleguide.html'),
-    protocol: 'file:',
-    slashes: true
-  }));
-
-  styleWindow.once('ready-to-show', () => {
-    styleWindow.show()
-  });
-
-
+  showStyleguide();
 })

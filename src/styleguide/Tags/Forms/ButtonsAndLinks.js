@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/href-no-hash */
 import React from 'react';
 import TagWithTitle from '../TagWithTitle';
 
@@ -13,3 +14,4 @@ const ButtonsAndLinks = () => (
 );
 
 export default TagWithTitle(ButtonsAndLinks);
+/* eslint-enable */

@@ -1,8 +1,8 @@
 import React from 'react';
 import ButtonsAndLinks from './ButtonsAndLinks';
 
-const Forms = () => {
-  return <section className='StyleguideSection' id='forms'>
+const Forms = () => (
+  <section className='StyleguideSection' id='forms'>
     <h2 className='StyleguideSection__title'>Forms</h2>
     <label>An example input field
       <input />
@@ -10,15 +10,15 @@ const Forms = () => {
     <fieldset>An example set of radio buttons
       <label>
         A
-        <input type="radio" name="styleguide-demo"/>
+        <input type="radio" name="styleguide-demo" />
       </label>
       <label>
         B
-        <input type="radio" name="styleguide-demo"/>
+        <input type="radio" name="styleguide-demo" />
       </label>
       <label>
         C
-        <input type="radio" name="styleguide-demo"/>
+        <input type="radio" name="styleguide-demo" />
       </label>
     </fieldset>
     <label>
@@ -34,6 +34,6 @@ const Forms = () => {
     </select>
     <ButtonsAndLinks />
   </section>
-}
+);
 
 export default Forms;

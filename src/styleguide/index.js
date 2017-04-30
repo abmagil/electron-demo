@@ -9,6 +9,6 @@ const Styleguide = () => (
     <ColorPalette />
     <Tags />
   </div>
-)
+);
 
 export default Styleguide;

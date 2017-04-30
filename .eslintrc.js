@@ -32,5 +32,12 @@ module.exports = {
         "no-unused-vars": [ "warn", {"vars": "local"} ],
         "import/no-unresolved": ["error", { "caseSensitive": false, ignore: ['\.scss$']}],
         "import/no-extraneous-dependencies": ["off"],
+        "jsx-a11y/label-has-for": ["off"],
+        "react/jsx-filename-extension": ["off"],
+        "no-debugger": ["warn"],
+        "no-console": ["warn"],
+    },
+    "globals": {
+        "jest": false
     }
 };

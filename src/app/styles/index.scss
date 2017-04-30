@@ -1,0 +1,16 @@
+// MUST BE PLACED FIRST
+@import '_globals.scss';
+
+@import '_fonts.scss';
+@import '_headings.scss';
+@import '_keyframes.scss';
+
+.main-content {
+  animation: fadein 1s;
+  background-color: $darkest-grey;
+  color: $lightest-grey;
+  font-family: 'Open Sans';
+  margin: 0 15px 0 15px;
+  margin: 0;
+  padding: 0;
+}

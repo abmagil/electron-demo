@@ -1,0 +1,41 @@
+.goalRow {
+  border-radius: 5px;
+  
+  &.veryLow {
+    background: linear-gradient(90deg, #5CD6A2, #BFF4DD);
+    background-attachment: fixed;
+  }
+
+  &.onTrack {
+    background: linear-gradient(90deg, #5CD6A2, #BFF4DD);
+    background-attachment: fixed;
+  }
+
+  &.tight {
+    background: linear-gradient(90deg, #F4F463, #BFF4DD);
+    background-attachment: fixed;
+  }
+
+  &.over {
+    background: linear-gradient(90deg, #920303, #BFF4DD);
+    background-attachment: fixed;
+  }
+
+  .actionButton {
+    background-color: white;
+    border: 1px solid #5CD6A2;
+    border-radius: 2px;
+    padding: 5px 0;
+    width: 5em;
+
+    &::first-of-type {
+      margin: 0 5px;
+    }
+  }
+
+  .cell {
+    height: 1em;
+    line-height: 1em;
+    padding-right: 1em;
+  }
+}

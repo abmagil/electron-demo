@@ -1,4 +1,4 @@
-@import '../../globals.scss';
+@import '../../app/styles/index.scss';
 
 .colorSwatch {
   border-radius: 2em;
@@ -10,7 +10,7 @@
   padding: 0 15px;
 
   &__name {
-    color: #ddd;
+    color: $light-grey;
     font-family: monospace;
     font-weight: bold;
     width: 10em;

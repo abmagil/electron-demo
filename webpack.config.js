@@ -3,7 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    bundle: path.join(__dirname, 'src', 'app.js'),
+    app: path.join(__dirname, 'src', 'app', 'index.js'),
     styleguide: path.join(__dirname, 'src', 'styleguide', 'main.js'),
   },
   output: {
@@ -11,31 +11,33 @@ module.exports = {
     filename: '[name].js'
   },
   target: "electron-main",
+  devtool: "source-map",
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        use: {
-          loader: 'eslint-loader',
-        },
+        use: [
+          {loader: 'babel-loader'},
+          {loader: 'eslint-loader'},
+        ],
         exclude: /node_modules/,
         enforce: 'pre',
-      },
-      {
-        test: /\.jsx?/,
-        loader: 'babel-loader',
-        enforce: 'pre',
-        exclude: /node_modules/,
-        query: {
-          presets: ["react"]
-        }
       },
       {
         test: /\.scss/,
         use: [
           { loader: "style-loader"},
-          { loader: "css-loader"},
+          { loader: "css-loader", options: {root: path.resolve(__dirname, 'src')}},
           { loader: "sass-loader"}
+        ]
+      },
+      {
+        // app/assets holds all binary-ish files
+        // e.g. fonts, svg, png
+        // test: /app\/assets/,
+        test: /\.svg|\.ttf/,
+        use: [
+          {loader: "file-loader", options: {name: "[path][name].[ext]"}},
         ]
       }
     ]
@@ -47,9 +49,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: path.join(__dirname, 'renderer', 'index.html'),
-      chunks: ['bundle'],
+      chunks: ['app'],
       template: '!!pug-loader!index.pug',
-      inject: 'head'
+      inject: 'body'
     }),
     new HtmlWebpackPlugin({
       filename: path.join(__dirname, 'renderer', 'styleguide.html'),
@@ -59,9 +61,11 @@ module.exports = {
     }),
   ],
   resolve: {
+    alias: {
+      App: path.resolve(__dirname, 'src', 'app')
+    },
     modules: [
-      path.resolve('./src'),
-      path.resolve('./node_modules')
+      path.resolve('node_modules')
     ]
-  },
+  }
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 
-import './ColorSwatch.scss'
+import './ColorSwatch.scss';
 
 const getStyle = (colorHex) => (
   { background: colorHex }
-)
+);
 
 const ColorSwatch = (colorHex) => (
   <li key={colorHex} className='colorSwatch' style={getStyle(colorHex)}>

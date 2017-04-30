@@ -32,6 +32,6 @@ const ColorPalette = () => (
       {colors.map((colorHex) => ColorSwatch(colorHex))}
     </ul>
   </section>
-)
+);
 
 export default ColorPalette;

@@ -8,12 +8,11 @@ html
   body
     .window
       .window-content
-        main#app
+        main#app.main-content
     button#open-styleguide Open Styleguide Window
     script.
       const {ipcRenderer} = require('electron');
-      var btn = document.getElementById('open-styleguide');
+      var btn = document.querySelector('#open-styleguide');
       btn.addEventListener('click', function () {
         ipcRenderer.send('open-style-guide')
       })
-

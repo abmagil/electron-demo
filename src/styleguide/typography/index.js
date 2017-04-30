@@ -9,8 +9,8 @@ const Typography = () => (
     <h4>Heading 4</h4>
     <h5>Heading 5</h5>
     <h6>Heading 6</h6>
-    <p>This is my paragraph text. It's good and long and rambling. I will continue to talk about paragraph text until such time as I am satisfied that all the letters have been utilized. X-ray.</p>
+    <p>This is my paragraph text. It&lsquo;s good and long and rambling. I will continue to talk about paragraph text until such time as I am satisfied that all the letters have been utilized. X-ray.</p>
   </section>
-)
+);
 
 export default Typography;

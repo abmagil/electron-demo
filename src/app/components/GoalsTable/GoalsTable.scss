@@ -1,0 +1,13 @@
+.goalsTable {
+  border-collapse: separate;
+  border-spacing: 0;
+
+  &__header {
+    text-align: center;
+  }
+
+  &__total {
+    text-align: right;
+  }
+
+}

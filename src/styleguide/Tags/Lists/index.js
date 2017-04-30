@@ -14,6 +14,6 @@ const Lists = () => (
     <OrderedList />
     <DefinitionList />
   </div>
-)
+);
 
 export default Lists;
