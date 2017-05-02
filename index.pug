@@ -9,3 +9,11 @@ html
     .window
       .window-content
         main#app
+    button#open-styleguide Open Styleguide Window
+    script.
+      const {ipcRenderer} = require('electron');
+      var btn = document.getElementById('open-styleguide');
+      btn.addEventListener('click', function () {
+        ipcRenderer.send('open-style-guide')
+      })
+

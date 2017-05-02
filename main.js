@@ -1,23 +1,21 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
+const { ipcMain } = require('electron')
+const { ipcRenderer } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
 function createWindow () {
-  // Create the browser window.
   win = new BrowserWindow({width: 1000, height: 800});
 
-  // and load the index.html of the app.
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'renderer' ,'index.html'),
     protocol: 'file:',
     slashes: true
   }));
-
-
 
   win.toggleDevTools();
 
@@ -47,3 +45,27 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+ipcMain.on('open-style-guide', function (event, arg) {
+  const styleWindow = new BrowserWindow({
+    minHight: 400,
+    minWidth: 800,
+    useContentSize: true,
+    backgroundColor: '#777',
+    titleBarStyle: 'hidden'
+  });
+
+  styleWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'renderer' ,'styleguide.html'),
+    protocol: 'file:',
+    slashes: true
+  }));
+
+  styleWindow.toggleDevTools();
+
+  styleWindow.once('ready-to-show', () => {
+    styleWindow.show()
+  });
+
+
+})
