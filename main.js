@@ -61,8 +61,6 @@ ipcMain.on('open-style-guide', function (event, arg) {
     slashes: true
   }));
 
-  styleWindow.toggleDevTools();
-
   styleWindow.once('ready-to-show', () => {
     styleWindow.show()
   });

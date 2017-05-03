@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: {
     bundle: path.join(__dirname, 'src', 'app.js'),
-    styleguide: path.join(__dirname, 'src', 'styleguide.js'),
+    styleguide: path.join(__dirname, 'src', 'styleguide', 'main.js'),
   },
   output: {
     path: path.join(__dirname, 'renderer'),
@@ -54,6 +54,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: path.join(__dirname, 'renderer', 'styleguide.html'),
       chunks: ['styleguide'],
+      template: '!!pug-loader!styleguide.pug',
       inject: 'body'
     }),
   ]
