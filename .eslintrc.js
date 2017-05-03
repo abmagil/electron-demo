@@ -4,7 +4,7 @@ module.exports = {
         "es6": true,
         "node": true
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "extends": ["airbnb", "eslint:recommended", "plugin:react/recommended"],
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -28,6 +28,8 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "no-unused-vars": [ "warn", {"vars": "local"} ],
+        "import/no-unresolved": ["error", { "caseSensitive": false}]
     }
 };
