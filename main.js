@@ -51,7 +51,7 @@ ipcMain.on('open-style-guide', function (event, arg) {
     minHight: 400,
     minWidth: 800,
     useContentSize: true,
-    backgroundColor: '#777',
+    backgroundColor: '#FFF',
     titleBarStyle: 'hidden'
   });
 

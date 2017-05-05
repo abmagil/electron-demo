@@ -30,6 +30,7 @@ module.exports = {
             "always"
         ],
         "no-unused-vars": [ "warn", {"vars": "local"} ],
-        "import/no-unresolved": ["error", { "caseSensitive": false}]
+        "import/no-unresolved": ["error", { "caseSensitive": false, ignore: ['\.scss$']}],
+        "import/no-extraneous-dependencies": ["off"],
     }
 };

@@ -57,5 +57,11 @@ module.exports = {
       template: '!!pug-loader!styleguide.pug',
       inject: 'body'
     }),
-  ]
+  ],
+  resolve: {
+    modules: [
+      path.resolve('./src'),
+      path.resolve('./node_modules')
+    ]
+  },
 }
