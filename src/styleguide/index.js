@@ -1,12 +1,14 @@
 import React from 'react';
 import Typography from './Typography';
 import ColorPalette from './ColorPalette';
+import Tags from './Tags';
 
 const Styleguide = () => (
-  <main>
+  <div>
     <Typography />
     <ColorPalette />
-  </main>
+    <Tags />
+  </div>
 )
 
 export default Styleguide;

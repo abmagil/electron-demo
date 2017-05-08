@@ -1,20 +1,9 @@
 import React from 'react';
-import 'app.scss';
 
-const getStyle = (colorHex) => {
-  console.log(colorHex);
-  return {
-    background: colorHex
-  }
-}
+import ColorSwatch from './ColorSwatch';
+import './ColorPalette.scss';
 
-const ColorSwatch = (colorHex) => (
-  <div key={colorHex} className='colorSwatch' style={getStyle(colorHex)}>
-    <p>{colorHex}</p>
-  </div>
-);
-
-const colors = [
+const greyscales = [
   '#f6f6f6',
   '#ddd',
   '#AAA',
@@ -22,6 +11,9 @@ const colors = [
   '#2e2e2e',
   '#fffff8',
   '#111111',
+];
+
+const colors = [
   '#17AB00',
   '#FFFB3D',
   '#FA0012',
@@ -29,9 +21,17 @@ const colors = [
 ];
 
 const ColorPalette = () => (
-  <ul>
-    {colors.map((colorHex) => ColorSwatch(colorHex))}
-  </ul>
+  <section className='StyleguideSection' id='colorPalette'>
+    <h2 className='StyleguideSection__title'>App Colors</h2>
+    <h3>Greyscales</h3>
+    <ul className='colorPalette'>
+      {greyscales.map((colorHex) => ColorSwatch(colorHex))}
+    </ul>
+    <h3>Colors</h3>
+    <ul className='colorPalette'>
+      {colors.map((colorHex) => ColorSwatch(colorHex))}
+    </ul>
+  </section>
 )
 
 export default ColorPalette;

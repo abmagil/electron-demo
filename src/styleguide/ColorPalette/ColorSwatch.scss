@@ -1,0 +1,19 @@
+@import '../../globals.scss';
+
+.colorSwatch {
+  border-radius: 2em;
+  border: 1px solid black;
+  box-shadow: 0 1px 3px $light-grey;
+  list-style: none;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  padding: 0 15px;
+
+  &__name {
+    color: #ddd;
+    font-family: monospace;
+    font-weight: bold;
+    width: 10em;
+    mix-blend-mode: difference;
+  }
+}
