@@ -1,1 +1,5 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><title>Hello Electron</title><script type="text/javascript" src="bundle.js"></script></head><body><div class="window"><div class="window-content"><main id="app"></main></div></div></body></html>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta http-equiv="x-ua-compatible" content="ie=edge"><title>Hello Electron</title><script type="text/javascript" src="bundle.js"></script></head><body><div class="window"><div class="window-content"><main id="app"></main></div></div><button id="open-styleguide">Open Styleguide Window</button><script>const {ipcRenderer} = require('electron');
+var btn = document.getElementById('open-styleguide');
+btn.addEventListener('click', function () {
+  ipcRenderer.send('open-style-guide')
+})</script></body></html>

@@ -4,16 +4,14 @@ module.exports = {
         "es6": true,
         "node": true
     },
-    "extends": "eslint:recommended",
+    "extends": ["airbnb", "eslint:recommended", "plugin:react/recommended"],
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
-            "jsx": true
-        }
+            "jsx": true,
+        },
+        "sourceType": "module"
     },
-    "plugins": [
-        "react"
-    ],
     "rules": {
         "indent": [
             "error",
@@ -30,6 +28,9 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "no-unused-vars": [ "warn", {"vars": "local"} ],
+        "import/no-unresolved": ["error", { "caseSensitive": false, ignore: ['\.scss$']}],
+        "import/no-extraneous-dependencies": ["off"],
     }
 };
