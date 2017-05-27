@@ -1,26 +1,31 @@
+@mixin gradient-for-square($color) {
+  background: radial-gradient(lighten(transparentize($color, 1), 10), $color)
+}
+
 .availableCash {
-  border-radius: 0em 5% 5% 0;
-  margin-left: -20px;
-  padding: 5px 0 5px calc(20px + 120px + 200px);
+  border: 4px solid white;
+  border-radius: 5%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
 
   &.veryLow {
-    background: linear-gradient(90deg, #0C2662, #BFF4DD),
+    @include gradient-for-square(#0C2662)
   }
   &.onTrack {
-    background: linear-gradient(90deg, #5CD6A2, #BFF4DD),
+    @include gradient-for-square(#5CD6A2)
   }
   &.tight {
-    background: linear-gradient(90deg, #F4F463, #BFF4DD),
+    @include gradient-for-square(#F4F463)
   }
   &.over {
-    background: linear-gradient(90deg, #920303, #BFF4DD),
+    @include gradient-for-square(#920303)
   }
 
   input {
-    border: 1px solid transparent;
+    // border: 1px solid transparent;
     border-radius: 2px;
-    margin-left: 1em;
+    margin: auto;
     padding: 2px 5px;
-    width: 9em;
   }
 }

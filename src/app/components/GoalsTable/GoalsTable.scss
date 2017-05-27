@@ -1,6 +1,7 @@
 .goalsTable {
   border-collapse: separate;
   border-spacing: 0;
+  display: inline-block;
 
   &__header {
     text-align: center;

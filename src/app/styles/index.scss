@@ -13,4 +13,10 @@
   margin: 0 15px 0 15px;
   margin: 0;
   padding: 0;
+
+  > [data-reactroot] {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+  }
 }

@@ -40337,11 +40337,6 @@ var App = function App() {
   return _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(
-      'h1',
-      null,
-      'Goals in React'
-    ),
     _react2.default.createElement(_GoalsContainer2.default, null),
     _react2.default.createElement(_CashContainer2.default, null)
   );
@@ -41465,7 +41460,7 @@ exports = module.exports = __webpack_require__(27)(undefined);
 
 
 // module
-exports.push([module.i, ".availableCash {\n  border-radius: 0em 5% 5% 0;\n  margin-left: -20px;\n  padding: 5px 0 5px calc(20px + 120px + 200px); }\n  .availableCash.veryLow {\n    background: linear-gradient(90deg, #0C2662, #BFF4DD); }\n  .availableCash.onTrack {\n    background: linear-gradient(90deg, #5CD6A2, #BFF4DD); }\n  .availableCash.tight {\n    background: linear-gradient(90deg, #F4F463, #BFF4DD); }\n  .availableCash.over {\n    background: linear-gradient(90deg, #920303, #BFF4DD); }\n  .availableCash input {\n    border: 1px solid transparent;\n    border-radius: 2px;\n    margin-left: 1em;\n    padding: 2px 5px;\n    width: 9em; }\n", ""]);
+exports.push([module.i, ".availableCash {\n  border: 4px solid white;\n  border-radius: 5%;\n  display: flex;\n  flex-direction: column;\n  padding: 15px; }\n  .availableCash.veryLow {\n    background: radial-gradient(rgba(18, 56, 143, 0), #0C2662); }\n  .availableCash.onTrack {\n    background: radial-gradient(rgba(133, 224, 185, 0), #5CD6A2); }\n  .availableCash.tight {\n    background: radial-gradient(rgba(247, 247, 147, 0), #F4F463); }\n  .availableCash.over {\n    background: radial-gradient(rgba(196, 4, 4, 0), #920303); }\n  .availableCash input {\n    border-radius: 2px;\n    margin: auto;\n    padding: 2px 5px; }\n", ""]);
 
 // exports
 
@@ -41507,7 +41502,7 @@ exports = module.exports = __webpack_require__(27)(undefined);
 
 
 // module
-exports.push([module.i, ".goalsTable {\n  border-collapse: separate;\n  border-spacing: 0; }\n  .goalsTable__header {\n    text-align: center; }\n  .goalsTable__total {\n    text-align: right; }\n", ""]);
+exports.push([module.i, ".goalsTable {\n  border-collapse: separate;\n  border-spacing: 0;\n  display: inline-block; }\n  .goalsTable__header {\n    text-align: center; }\n  .goalsTable__total {\n    text-align: right; }\n", ""]);
 
 // exports
 
@@ -41521,7 +41516,7 @@ exports = module.exports = __webpack_require__(27)(undefined);
 
 
 // module
-exports.push([module.i, "@font-face {\n  font-family: 'Shrikhand';\n  src: url(" + __webpack_require__(128) + "); }\n\n@font-face {\n  font-family: 'Open Sans';\n  src: url(" + __webpack_require__(118) + "), url(" + __webpack_require__(119) + "), url(" + __webpack_require__(120) + "), url(" + __webpack_require__(121) + "), url(" + __webpack_require__(122) + "), url(" + __webpack_require__(123) + "), url(" + __webpack_require__(124) + "), url(" + __webpack_require__(125) + "), url(" + __webpack_require__(126) + "), url(" + __webpack_require__(127) + "); }\n\nh1, h2, h3, h4, h5, h6 {\n  font-family: 'Shrikhand', sans-serif;\n  font-weight: 100; }\n\nh1 {\n  font-size: 32px; }\n\n@keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n.main-content {\n  animation: fadein 1s;\n  background-color: #2e2e2e;\n  color: #f6f6f6;\n  font-family: 'Open Sans';\n  margin: 0 15px 0 15px;\n  margin: 0;\n  padding: 0; }\n", ""]);
+exports.push([module.i, "@font-face {\n  font-family: 'Shrikhand';\n  src: url(" + __webpack_require__(128) + "); }\n\n@font-face {\n  font-family: 'Open Sans';\n  src: url(" + __webpack_require__(118) + "), url(" + __webpack_require__(119) + "), url(" + __webpack_require__(120) + "), url(" + __webpack_require__(121) + "), url(" + __webpack_require__(122) + "), url(" + __webpack_require__(123) + "), url(" + __webpack_require__(124) + "), url(" + __webpack_require__(125) + "), url(" + __webpack_require__(126) + "), url(" + __webpack_require__(127) + "); }\n\nh1, h2, h3, h4, h5, h6 {\n  font-family: 'Shrikhand', sans-serif;\n  font-weight: 100; }\n\nh1 {\n  font-size: 32px; }\n\n@keyframes fadein {\n  from {\n    opacity: 0; }\n  to {\n    opacity: 1; } }\n\n.main-content {\n  animation: fadein 1s;\n  background-color: #2e2e2e;\n  color: #f6f6f6;\n  font-family: 'Open Sans';\n  margin: 0 15px 0 15px;\n  margin: 0;\n  padding: 0; }\n  .main-content > [data-reactroot] {\n    display: inline-flex;\n    justify-content: space-between;\n    width: 100%; }\n", ""]);
 
 // exports
 
