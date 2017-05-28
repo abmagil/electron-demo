@@ -22,7 +22,7 @@ const goal = (state = {}, action) => {
   const { lockedAttr } = state;
   const attrToCalculate = remainingAttr(lockedAttr, changingAttr);
   const calculation = functionMap[attrToCalculate];
-  if (action.key !== state.key) { throw new Error('How did you hit this?'); } // shouldn't ever hit this
+  if (action.key !== state.key) { throw new Error('How did you hit this?'); }
 
   return {
     ...state,
