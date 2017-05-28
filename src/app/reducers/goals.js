@@ -1,4 +1,5 @@
 import sum from 'lodash/sum';
+import orderBy from 'lodash/orderBy';
 
 import * as actions from '../constants/ActionTypes';
 import * as calculated from '../utils/attr-relationships';
@@ -76,4 +77,8 @@ export const orderedGoalsFrom = (state) => (
 export const totalGoalSpendingFrom = (state) => {
   const objectValues = Object.keys(state.goals).map((key) => state.goals[key]);
   return sum(objectValues.map((goal) => (goal.spendingPerMonth)));
+};
+
+export const completionOrderedGoalsFrom = (state) => {
+  return orderBy(state.goals, ['deadlineYear', 'spendingPerMonth']);
 };
