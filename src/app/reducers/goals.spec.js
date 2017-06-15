@@ -1,3 +1,5 @@
+import omit from 'lodash/omit';
+
 import goals from './goals';
 import * as actions from '../constants/ActionTypes';
 
@@ -9,14 +11,58 @@ describe('reducers', () => {
       expect(goals(undefined, {})).toEqual(initialState);
     });
 
-    it(`should handle ${actions.ADD_GOAL} action for a goal`, () => {
-      expect(goals({}, {
-        type: `${actions.ADD_GOAL}`, goal: { id: 1, type: 'Emergency Goal', total: 100, deadline: 1999, spendingPerMonth: 15 }
-      })).toEqual({
-        "1": { id: 1, type: 'Emergency Goal', total: 100, deadline: 1999, spendingPerMonth: 15}
-      })
-    });
+      describe(`on an ${actions.ADD_GOAL} action`, () => {
+        // NOTE: This does not calculate properly. That is intentional to prove
+        //  that the reducer will pass such a situation through for now
+        const fullGoal = {
+          id: 1,
+          type: 'Emergency Goal',
+          goalTotal: 120,
+          startingYear: 1998,
+          deadlineYear: 1999,
+          spendingPerMonth: 15
+        };
 
+        it('should add a row for the passed goal', () => {
+          expect(goals({}, { type: `${actions.ADD_GOAL}`, goal: fullGoal }))
+            .toEqual({
+              "1": {
+                id: 1,
+                type: 'Emergency Goal',
+                goalTotal: 120,
+                startingYear: 1998,
+                deadlineYear: 1999,
+                spendingPerMonth: 15
+              }
+          });
+        });
+
+        it('should calculate the remaining attribute from whichever two attributes are passed', () => {
+          const inputGoal = omit(fullGoal, ['spendingPerMonth']);
+
+          expect(goals({}, { type: `${actions.ADD_GOAL}`, goal: inputGoal }))
+            .toEqual({
+              "1": {
+                id: 1,
+                type: 'Emergency Goal',
+                goalTotal: 120,
+                startingYear: 1998,
+                deadlineYear: 1999,
+                spendingPerMonth: 10,
+              }
+          });
+      });
+
+      it('should throw an error if insufficient information is dispatched', () => {
+        const inputGoal = omit(fullGoal, ['spendingPerMonth', 'deadlineYear']);
+
+        const willThrow = () => {
+          goals({}, { type: `${actions.ADD_GOAL}`, goal: inputGoal});
+        }
+
+        expect(willThrow).toThrowError('Too Many Unset Attributes');
+      });
+    })
     describe(`on an ${actions.UPDATE_GOAL} action`, () => {
       describe('for an outlay-locked goal', () => {
         const outlayLockedGoal = {
