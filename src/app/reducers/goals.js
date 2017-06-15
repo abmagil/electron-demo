@@ -1,14 +1,21 @@
 import sum from 'lodash/sum';
 import orderBy from 'lodash/orderBy';
+import without from 'lodash/without';
 
 import * as actions from '../constants/ActionTypes';
 import * as calculated from '../utils/attr-relationships';
 
-// Return [0] because .filter returns an array of length 1
-function remainingAttr(lockedAttr, changingAttr) {
-  return ['goalTotal', 'deadlineYear', 'spendingPerMonth']
-    .filter((attr) => (attr !== lockedAttr))
-    .filter((attr) => (attr !== changingAttr))[0];
+export const GOAL_ATTRIBUTES = [
+  'goalTotal',
+  'deadlineYear',
+  'spendingPerMonth',
+];
+
+// without returns an array, hence the [0]
+function remainingAttr(attr1, attr2) {
+  const remainingAttr = without(GOAL_ATTRIBUTES, attr1, attr2)[0];
+
+  return remainingAttr;
 }
 
 const functionMap = {
@@ -44,7 +51,21 @@ const updateLocked = (state = {}, action) => {
 export default function goals(state = {}, action) {
   switch (action.type) {
   case actions.ADD_GOAL: {
-    const { goal: newGoal } = action;
+    let { goal: newGoal } = action;
+
+    const unsetAttribute = without(GOAL_ATTRIBUTES, ...Object.keys(newGoal));
+
+    if (unsetAttribute.length > 1) {
+      throw new Error('Too Many Unset Attributes');
+    } else if (unsetAttribute.length === 1) {
+      const attrToCalculate = unsetAttribute[0];
+      const calculation = functionMap[attrToCalculate];
+
+      newGoal = {
+        ...newGoal,
+        [attrToCalculate]: calculation(newGoal),
+      };
+    }
 
     return {
       ...state,
