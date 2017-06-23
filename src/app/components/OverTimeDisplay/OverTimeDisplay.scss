@@ -1,0 +1,7 @@
+.overTimeDisplay {
+  display: flex;
+
+  & > div {
+    display: inline;
+  }
+}

@@ -10,7 +10,7 @@ function setup() {
     />)
   };
 }
-describe.only('components', () => {
+describe('components', () => {
   describe('<MaskedInput />', () => {
     it('should render', () => {
       const { wrapper } = setup();

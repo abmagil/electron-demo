@@ -34,6 +34,7 @@ module.exports = {
         "import/no-extraneous-dependencies": ["off"],
         "jsx-a11y/label-has-for": ["off"],
         "react/jsx-filename-extension": ["off"],
+        "react/no-array-index-key": ["warn"],
         "no-debugger": ["warn"],
         "no-console": ["warn"],
     },

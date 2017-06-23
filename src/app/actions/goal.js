@@ -1,7 +1,7 @@
 import { UPDATE_GOAL, UPDATE_LOCKED } from '../constants/ActionTypes';
 
-const updateGoal = ({ goalID, attrName, newVal, startTime=new Date() }) => (
-  {type: UPDATE_GOAL, startTime, attrName, newVal, goalID }
+const updateGoal = ({ goalID, attrName, newVal }) => (
+  {type: UPDATE_GOAL, attrName, newVal, goalID }
 );
 
 const updateLocked = ({ goalID, attrName }) => (

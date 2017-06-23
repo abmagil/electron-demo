@@ -1,4 +1,5 @@
 import sum from 'lodash/sum';
+import orderBy from 'lodash/orderBy';
 import without from 'lodash/without';
 
 import * as actions from '../constants/ActionTypes';
@@ -28,7 +29,7 @@ const goal = (state = {}, action) => {
   const { lockedAttr } = state;
   const attrToCalculate = remainingAttr(lockedAttr, changingAttr);
   const calculation = functionMap[attrToCalculate];
-  if (action.key !== state.key) { throw new Error('How did you hit this?'); } // shouldn't ever hit this
+  if (action.key !== state.key) { throw new Error('How did you hit this?'); }
 
   return {
     ...state,
@@ -97,4 +98,8 @@ export const orderedGoalsFrom = (state) => (
 export const totalGoalSpendingFrom = (state) => {
   const objectValues = Object.keys(state.goals).map((key) => state.goals[key]);
   return sum(objectValues.map((goal) => (goal.spendingPerMonth)));
+};
+
+export const completionOrderedGoalsFrom = (state) => {
+  return orderBy(state.goals, ['deadlineYear', 'spendingPerMonth']);
 };
