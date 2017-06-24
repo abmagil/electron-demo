@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   const { goal, spendingToThisGoal } = ownProps;
   return {
     goal,
-    spendingSummary: spendingSummary(spendingToThisGoal/ availableCashFrom(state))
+    spendingSummary: spendingSummary(spendingToThisGoal/ availableCashFrom(state)),
   };
 };
 
@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onDownClick: (id) => {
     dispatch(moveDown(id));
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GoalRow);

@@ -15,7 +15,7 @@ const {
 } = Jubilation;
 
 const {
-  arrayOf
+  arrayOf,
 } = PropTypes;
 
 const spendingArrayToData = (monthlySpending, idx) => ({ x: idx, y: monthlySpending });
@@ -49,7 +49,7 @@ const OverTimeDisplay = ({completionOrderedGoals}) => {
   const {
     immediateGoals,
     nearTermGoals,
-    longTermGoals
+    longTermGoals,
   } = groupBy(completionOrderedGoals, categorizeDeadline);
 
   return (
@@ -77,7 +77,7 @@ const OverTimeDisplay = ({completionOrderedGoals}) => {
 };
 
 OverTimeDisplay.propTypes = {
-  completionOrderedGoals: arrayOf(GoalRow.propTypes['goal']).isRequired
+  completionOrderedGoals: arrayOf(GoalRow.propTypes['goal']).isRequired,
 };
 
 export default OverTimeDisplay;

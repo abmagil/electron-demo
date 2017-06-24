@@ -21,7 +21,7 @@ function remainingAttr(attr1, attr2) {
 const functionMap = {
   goalTotal: calculated.total,
   deadlineYear: calculated.endYear,
-  spendingPerMonth: calculated.spendingPerMonth
+  spendingPerMonth: calculated.spendingPerMonth,
 };
 
 const goal = (state = {}, action) => {
@@ -36,15 +36,15 @@ const goal = (state = {}, action) => {
     [changingAttr]: newVal,
     [attrToCalculate]: calculation({
       ...state,
-      [changingAttr]: newVal
-    })
+      [changingAttr]: newVal,
+    }),
   };
 };
 
 const updateLocked = (state = {}, action) => {
   return {
     ...state,
-    lockedAttr: action.attrName
+    lockedAttr: action.attrName,
   };
 };
 
@@ -69,21 +69,21 @@ export default function goals(state = {}, action) {
 
     return {
       ...state,
-      [newGoal.id]: newGoal
+      [newGoal.id]: newGoal,
     };
   }
   case actions.UPDATE_GOAL: {
     const updateGoal = state[action.goalID];
     return {
       ...state,
-      [action.goalID]: goal(updateGoal, action) 
+      [action.goalID]: goal(updateGoal, action),
     };
   }
   case actions.UPDATE_LOCKED: {
     const uGoal = state[action.goalID];
     return {
       ...state,
-      [action.goalID]: updateLocked(uGoal, action)
+      [action.goalID]: updateLocked(uGoal, action),
     };
   }
   default:

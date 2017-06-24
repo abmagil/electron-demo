@@ -8,7 +8,7 @@ const {
   func,
   number,
   string,
-  shape
+  shape,
 } = PropTypes;
 
 const GoalRow = ({ goal,spendingSummary, onUpClick, onDownClick }) => (
@@ -41,11 +41,11 @@ GoalRow.propTypes = {
     id: number.isRequired,
     goalTotal: number.isRequired,
     deadlineYear: number.isRequired,
-    spendingPerMonth: number.isRequired
+    spendingPerMonth: number.isRequired,
   }).isRequired,
   spendingSummary: string.isRequired,
   onUpClick: func.isRequired,
-  onDownClick: func.isRequired
+  onDownClick: func.isRequired,
 };
 
 export default GoalRow;

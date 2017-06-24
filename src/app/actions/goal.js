@@ -8,7 +8,7 @@ const updateLocked = ({ goalID, attrName }) => (
   { type: UPDATE_LOCKED, goalID, attrName }
 );
 
-export {
+export default {
   updateGoal,
   updateLocked,
 };

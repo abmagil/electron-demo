@@ -17,7 +17,7 @@ const colors = [
   '#17AB00',
   '#FFFB3D',
   '#FA0012',
-  '#042768'
+  '#042768',
 ];
 
 const ColorPalette = () => (

@@ -6,7 +6,7 @@ function order(state = [], action) {
   case actionTypes.ADD_GOAL: {
     return [
       ...state,
-      action.goal.id
+      action.goal.id,
     ];
   }
   case actionTypes.GOAL_MOVE_UP: {
@@ -18,7 +18,7 @@ function order(state = [], action) {
       ...state.slice(0, goalIdx - 1),
       state[goalIdx],
       prevEl,
-      ...state.slice(goalIdx + 1)
+      ...state.slice(goalIdx + 1),
     ];
   }
   case actionTypes.GOAL_MOVE_DOWN: {
@@ -29,7 +29,7 @@ function order(state = [], action) {
       ...state.slice(0,goalIdx),
       state[goalIdx + 1],
       state[goalIdx],
-      ...state.slice(goalIdx + 2)
+      ...state.slice(goalIdx + 2),
     ];
   }
   default:

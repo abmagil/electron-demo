@@ -34,7 +34,7 @@ GoalAttribute.propTypes = {
   isLocked: PropTypes.bool.isRequired,
   value: PropTypes.number.isRequired,
   lockedHandler: PropTypes.func.isRequired,
-  updateHandler: PropTypes.func.isRequired
+  updateHandler: PropTypes.func.isRequired,
 };
 
 export default GoalAttribute;

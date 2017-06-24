@@ -22,11 +22,11 @@ const GoalList = ({ orderedGoals, cumulativeGoalSpending }) => (
 
 GoalList.propTypes = {
   cumulativeGoalSpending: arrayOf(number),
-  orderedGoals: arrayOf(GoalRow.propTypes['goal']).isRequired
+  orderedGoals: arrayOf(GoalRow.propTypes['goal']).isRequired,
 };
 
 GoalList.defaultProps = {
-  cumulativeGoalSpending: []
+  cumulativeGoalSpending: [],
 };
 
 export default GoalList;

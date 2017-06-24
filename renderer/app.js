@@ -42602,7 +42602,6 @@ if(false) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.updateLocked = exports.updateGoal = undefined;
 
 var _ActionTypes = __webpack_require__(61);
 
@@ -42619,8 +42618,10 @@ var updateLocked = function updateLocked(_ref2) {
   return { type: _ActionTypes.UPDATE_LOCKED, goalID: goalID, attrName: attrName };
 };
 
-exports.updateGoal = updateGoal;
-exports.updateLocked = updateLocked;
+exports.default = {
+  updateGoal: updateGoal,
+  updateLocked: updateLocked
+};
 
 /***/ }),
 /* 436 */

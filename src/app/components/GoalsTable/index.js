@@ -11,14 +11,14 @@ class GoalsTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cumulativeGoalSpending: []
+      cumulativeGoalSpending: [],
     };
   }
 
   componentWillReceiveProps(nextProps) {
     const { orderedGoals } = nextProps;
     this.state = {
-      cumulativeGoalSpending: cumulativeGoalSpendingFor(orderedGoals)
+      cumulativeGoalSpending: cumulativeGoalSpendingFor(orderedGoals),
     };
   }
 
@@ -56,11 +56,11 @@ class GoalsTable extends React.Component {
 }
 
 GoalsTable.propTypes = {
-  orderedGoals: GoalList.propTypes.orderedGoals
+  orderedGoals: GoalList.propTypes.orderedGoals,
 };
 
 GoalsTable.defaultProps = {
-  orderedGoals: []
+  orderedGoals: [],
 };
 
 export default GoalsTable;

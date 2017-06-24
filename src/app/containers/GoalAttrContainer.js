@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
     isLocked: attrName === goal.lockedAttr,
     value: goal[attrName],
     attrName,
-    goalID
+    goalID,
   };
 };
 
@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         updateGoal({
           newVal: Number(event.target.value),
           goalID,
-          attrName
+          attrName,
         })
       );
     },
@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(
         updateLocked({
           goalID,
-          attrName
+          attrName,
         })
       );
     },

@@ -17,7 +17,7 @@ const AvailableCash = ({ availableCash, spendingSummary, updateHandler }) => (
 AvailableCash.propTypes = {
   spendingSummary: PropTypes.string.isRequired,
   availableCash: PropTypes.number.isRequired,
-  updateHandler: PropTypes.func.isRequired
+  updateHandler: PropTypes.func.isRequired,
 };
 
 export default AvailableCash;

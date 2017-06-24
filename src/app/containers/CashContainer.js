@@ -8,14 +8,14 @@ import spendingSummary from '../utils/spending-summary';
 
 const mapStateToProps = (state) => ({
   availableCash: availableCashFrom(state),
-  spendingSummary: spendingSummary(totalGoalSpendingFrom(state) / availableCashFrom(state))
+  spendingSummary: spendingSummary(totalGoalSpendingFrom(state) / availableCashFrom(state)),
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
     updateHandler: (event) => {
       dispatch(setAvailableCash(Number(event.target.value)));
-    }
+    },
   };
 };
 

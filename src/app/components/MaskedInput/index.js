@@ -10,11 +10,11 @@ const MaskedInput = ({validatorFn, value, type, ...cleanedProps}) => (
 MaskedInput.propTypes = {
   validatorFn: PropTypes.func,
   type: PropTypes.string.isRequired,
-  value: PropTypes.any.isRequired
+  value: PropTypes.any.isRequired,
 };
 
 MaskedInput.defaultProps = {
-  validatorFn: identity
+  validatorFn: identity,
 };
 
 export default MaskedInput;

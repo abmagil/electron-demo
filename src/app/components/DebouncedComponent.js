@@ -1,5 +1,5 @@
 import React, {
-  Component,
+  Component
 } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
@@ -27,7 +27,7 @@ class DebouncedComponent extends Component {
       debouncePeriod
     );
     this.state = {
-      value
+      value,
     };
   }
 
@@ -45,7 +45,7 @@ class DebouncedComponent extends Component {
   _onChange(e) {
     e.persist();
     this.setState({
-      value: Number(e.target.value)
+      value: Number(e.target.value),
     });
     this.debouncedActionCreator(e);
   }
@@ -75,9 +75,9 @@ DebouncedComponent.propTypes = {
     props: shape({
       onChange: func.isRequired,
       onBlur: func,
-      value: any.isRequired
-    })
-  }).isRequired
+      value: any.isRequired,
+    }),
+  }).isRequired,
 };
 
 DebouncedComponent.defaultProps = {

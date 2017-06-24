@@ -15,6 +15,7 @@
     "classnames": "^2.2.5",
     "electron": "^1.6.2",
     "electron-prebuilt": "^1.4.13",
+    "javascript-state-machine": "^3.0.1",
     "jubilation": "file:../jubilation",
     "lodash": "^4.17.4",
     "moment": "^2.18.1",
