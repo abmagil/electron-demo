@@ -26,8 +26,6 @@ function createWindow () {
   win = new BrowserWindow({
     width: 1000,
     height: 800,
-    fullscreen: true,
-    fullscrenable: false,
     backgroundColor: '#2e2e2e'
   });
 
