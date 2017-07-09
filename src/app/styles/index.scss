@@ -1,6 +1,9 @@
 // MUST BE PLACED FIRST
 @import '_globals.scss';
 
+@import './skeleton/css/normalize';
+@import './skeleton/css/skeleton';
+
 @import '_fonts.scss';
 @import '_headings.scss';
 @import '_keyframes.scss';
