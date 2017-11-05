@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import DebouncedComponent from '../DebouncedComponent';
 import NumericInput from '../NumericInput';
 import './GoalAttribute.scss';
+import Lock from '../../assets/svg/locked.svg';
 
 const GoalAttribute = ({ isLocked, value, lockedHandler, updateHandler }) => {
   return (
@@ -13,7 +14,7 @@ const GoalAttribute = ({ isLocked, value, lockedHandler, updateHandler }) => {
           ? <p>{value}</p>
           : (
             <div>
-              <img className='lock' alt='' onClick={lockedHandler} />
+              <Lock className='lock' alt={''} onClick={lockedHandler} />
               <DebouncedComponent debouncePeriod={1000}>
                 <NumericInput
                   className='editable'

@@ -1,12 +1,15 @@
+// GLOBAL DEFINITIONS
 // MUST BE PLACED FIRST
-@import '_globals.scss';
-
-@import './skeleton/css/normalize';
-@import './skeleton/css/skeleton';
-
+@import '_colors.scss';
 @import '_fonts.scss';
-@import '_headings.scss';
 @import '_keyframes.scss';
+
+@import '~App/styles/skeleton/normalize.css';
+@import '~App/styles/skeleton/skeleton.css';
+@import '~App/styles/_global.scss';
+
+// Actual Stylings
+@import '_headings.scss';
 
 .main-content {
   animation: fadein 1s;
@@ -15,7 +18,7 @@
   font-family: 'Open Sans';
   margin: 0 15px 0 15px;
   margin: 0;
-  padding: 0;
+  padding: 0 15px;
 
 }
 
@@ -24,3 +27,4 @@
   justify-content: space-between;
   width: 100%;
 }
+

@@ -27,17 +27,33 @@ module.exports = {
         test: /\.scss/,
         use: [
           { loader: "style-loader"},
-          { loader: "css-loader", options: {root: path.resolve(__dirname, 'src')}},
-          { loader: "sass-loader"}
+          { loader: "css-loader", options: {
+            root: path.resolve(__dirname, 'src'),
+            sourceMap: true,
+          }},
+          { loader: "sass-loader", options: {
+            sourceMap: true,
+          }}
         ]
       },
       {
-        // app/assets holds all binary-ish files
-        // e.g. fonts, svg, png
-        // test: /app\/assets/,
-        test: /\.svg|\.ttf/,
+        test: /\.ttf/,
         use: [
           {loader: "file-loader", options: {name: "[path][name].[ext]"}},
+        ]
+      },
+      {
+        test: /\.svg/,
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+          {
+            loader: 'react-svg-loader',
+            query: {
+              jsx: true
+            }
+          }
         ]
       }
     ]

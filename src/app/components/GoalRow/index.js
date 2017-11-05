@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+
+import ActionButton from './ActionButton';
 import GoalAttrContainer from '../../containers/GoalAttrContainer';
 import './GoalRow.scss';
+
 
 const {
   func,
@@ -19,19 +22,17 @@ const GoalRow = ({ goal,spendingSummary, onUpClick, onDownClick }) => (
     <GoalAttrContainer attrName={'goalTotal'} goalID={goal.id} />
     <GoalAttrContainer attrName={'deadlineYear'} goalID={goal.id} />
     <GoalAttrContainer attrName={'spendingPerMonth'} goalID={goal.id} />
-    <td className='cell'>
-      <button
-        className='actionButton up'
+    <td className='cell move'>
+      <ActionButton
+        classNames={['up']}
         onClick={() => onUpClick(goal.id)}
-      >
-        Up
-      </button>
-      <button
-        className='actionButton down'
+        altText='increase priority'
+      />
+      <ActionButton
+        classNames={['down']}
         onClick={() => onDownClick(goal.id)}
-      >
-        Down
-      </button>
+        altText='reduce priority'
+      />
     </td>
   </tr>
 );

@@ -21,20 +21,13 @@
     background-attachment: fixed;
   }
 
-  .actionButton {
-    background-color: white;
-    border: 1px solid #5CD6A2;
-    border-radius: 2px;
-    padding: 5px 0;
-    width: 5em;
-
-    &::first-of-type {
-      margin: 0 5px;
-    }
+  .move {
+    display: flex;
+    justify-content: space-between;
   }
 
   .cell {
-    height: 1em;
+    // height: 1em;
     line-height: 1em;
     padding-right: 1em;
   }

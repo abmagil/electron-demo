@@ -6,3 +6,13 @@
     opacity: 1;
   }
 }
+
+@keyframes addUnderline {
+  from {
+    border-bottom: 0;
+  }
+  to {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+}
