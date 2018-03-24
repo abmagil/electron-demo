@@ -27,7 +27,7 @@ function createWindow () {
     width: 1000,
     height: 800,
     backgroundColor: '#2e2e2e',
-    fullscreen: true,
+    fullscreen: false,
   });
 
   win.loadURL(url.format({

@@ -6,7 +6,6 @@ import {UPDATE_SPENDING} from '../constants/ActionTypes';
 
 const mapStateToProps = (state) => ({
   categories: flatToNested(state.spending),
-  spending: state.spending,
 });
 const mapDispatchToProps = (dispatch) => ({
   updateFn: ({path, e}) => {

@@ -16,6 +16,8 @@ const CategoryInput = ({parentPath, subcategory, value, updateFn}) => (
   </label>
 );
 
+
+
 const SpendingForm = ({ categories, updateFn }) => {
   return (<form>
     {entries(categories)
