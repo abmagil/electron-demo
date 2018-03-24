@@ -2,7 +2,9 @@ import React from 'react';
 
 import GoalsContainer from './GoalsContainer';
 import CashContainer from './CashContainer';
-import OverTimeContainer from './OverTimeContainer';
+import FreeCashCalculatorContainer from './FreeCashCalculatorContainer';
+// import OverTimeContainer from './OverTimeContainer';
+
 
 const App = () => (
   <div>
@@ -10,9 +12,10 @@ const App = () => (
       <GoalsContainer />
       <CashContainer />
     </div>
-    <div className='display'>
+    {/* <div className='display'>
       <OverTimeContainer />
-    </div>
+    </div> */}
+    <FreeCashCalculatorContainer />
   </div>
 );
 

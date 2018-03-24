@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNamesLib from 'classnames';
 
 import Chevron from '../../../assets/svg/chevron.svg';
-import "./ActionButton.scss";
+import './ActionButton.scss';
 
 const ActionButton = ({onClick, altText, classNames=['']}) => {
   const btnClass = classNamesLib('actionButton', ...classNames);

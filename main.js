@@ -26,13 +26,14 @@ function createWindow () {
   win = new BrowserWindow({
     width: 1000,
     height: 800,
-    backgroundColor: '#2e2e2e'
+    backgroundColor: '#2e2e2e',
+    fullscreen: true,
   });
 
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'renderer' ,'index.html'),
     protocol: 'file:',
-    slashes: true
+    slashes: true,
   }));
 
   win.toggleDevTools();

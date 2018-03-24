@@ -40,6 +40,7 @@ module.exports = {
         "import/no-unresolved": ["error", { "caseSensitive": false, ignore: ['\.scss$']}],
         "import/no-extraneous-dependencies": ["off"],
         "jsx-a11y/label-has-for": ["off"],
+        "react/prop-types": ["off"],
         "react/jsx-filename-extension": ["off"],
         "react/no-array-index-key": ["warn"],
         "no-debugger": ["warn"],

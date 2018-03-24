@@ -1,5 +1,5 @@
 var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -8,10 +8,10 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'renderer'),
-    filename: '[name].js'
+    filename: '[name].js',
   },
-  target: "electron-main",
-  devtool: "source-map",
+  target: 'electron-main',
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -26,21 +26,21 @@ module.exports = {
       {
         test: /\.scss/,
         use: [
-          { loader: "style-loader"},
-          { loader: "css-loader", options: {
+          { loader: 'style-loader'},
+          { loader: 'css-loader', options: {
             root: path.resolve(__dirname, 'src'),
             sourceMap: true,
           }},
-          { loader: "sass-loader", options: {
+          { loader: 'sass-loader', options: {
             sourceMap: true,
-          }}
-        ]
+          }},
+        ],
       },
       {
         test: /\.ttf/,
         use: [
-          {loader: "file-loader", options: {name: "[path][name].[ext]"}},
-        ]
+          {loader: 'file-loader', options: {name: '[path][name].[ext]'}},
+        ],
       },
       {
         test: /\.svg/,
@@ -51,37 +51,37 @@ module.exports = {
           {
             loader: 'react-svg-loader',
             query: {
-              jsx: true
-            }
-          }
-        ]
-      }
-    ]
+              jsx: true,
+            },
+          },
+        ],
+      },
+    ],
   },
   node: {
     __dirname: false,
-    __filename: false
+    __filename: false,
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: path.join(__dirname, 'renderer', 'index.html'),
       chunks: ['app'],
       template: '!!pug-loader!index.pug',
-      inject: 'body'
+      inject: 'body',
     }),
     new HtmlWebpackPlugin({
       filename: path.join(__dirname, 'renderer', 'styleguide.html'),
       chunks: ['styleguide'],
       template: '!!pug-loader!styleguide.pug',
-      inject: 'body'
+      inject: 'body',
     }),
   ],
   resolve: {
     alias: {
-      App: path.resolve(__dirname, 'src', 'app')
+      App: path.resolve(__dirname, 'src', 'app'),
     },
     modules: [
-      path.resolve('node_modules')
-    ]
-  }
-}
+      path.resolve('node_modules'),
+    ],
+  },
+};

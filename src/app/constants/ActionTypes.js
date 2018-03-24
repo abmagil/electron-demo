@@ -6,3 +6,6 @@ export const REMOVE_GOAL    = 'GOAL:REMOVE';
 export const UPDATE_GOAL    = 'GOAL:UPDATE';
 export const UPDATE_LOCKED  = 'GOAL:UPDATE:LOCKED';
 export const UPDATE_CASH    = 'APP:UPDATE_CASH';
+
+export const ADD_CATEGORY   = 'CATEGORY:ADD';
+export const UPDATE_SPENDING = 'CATEGORY:UPDATE_SPENDING';
