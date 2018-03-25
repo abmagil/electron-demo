@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     app: path.join(__dirname, 'src', 'app', 'index.js'),
-    styleguide: path.join(__dirname, 'src', 'styleguide', 'main.js'),
+    // styleguide: path.join(__dirname, 'src', 'styleguide', 'main.js'),
   },
   output: {
     path: path.join(__dirname, 'renderer'),
@@ -17,8 +17,8 @@ module.exports = {
       {
         test: /\.jsx?$/,
         use: [
-          {loader: 'babel-loader'},
-          {loader: 'eslint-loader'},
+          { loader: 'babel-loader' },
+          { loader: 'eslint-loader' },
         ],
         exclude: /node_modules/,
         enforce: 'pre',
@@ -26,21 +26,26 @@ module.exports = {
       {
         test: /\.scss/,
         use: [
-          { loader: 'style-loader'},
-          { loader: 'css-loader', options: {
-            root: path.resolve(__dirname, 'src'),
-            sourceMap: true,
-          }},
-          { loader: 'sass-loader', options: {
-            sourceMap: true,
-          }},
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader', options: {
+              // root: path.resolve(__dirname, 'src'),
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-loader', options: {
+              sourceMap: true,
+            },
+          },
         ],
       },
       {
-        test: /\.ttf/,
-        use: [
-          {loader: 'file-loader', options: {name: '[path][name].[ext]'}},
-        ],
+        test: /\.(ttf|eot|woff|woff2)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[ext]',
+        },
       },
       {
         test: /\.svg/,

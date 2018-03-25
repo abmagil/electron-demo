@@ -4,27 +4,29 @@
 @import '_fonts.scss';
 @import '_keyframes.scss';
 
-@import '~App/styles/skeleton/normalize.css';
-@import '~App/styles/skeleton/skeleton.css';
-@import '~App/styles/_global.scss';
+@import 'photon-0.1.2-dist/css/photon.css';
+@import 'photon-0.1.2-dist/fonts/photon-entypo.ttf';
+// @import '~App/styles/skeleton/normalize.css';
+// @import '~App/styles/skeleton/skeleton.css';
+// @import '~App/styles/_global.scss';
 
 // Actual Stylings
-@import '_headings.scss';
+// @import '_headings.scss';
 
-.main-content {
-  animation: fadein 1s;
-  background-color: $darkest-grey;
-  color: $lightest-grey;
-  font-family: 'Open Sans';
-  margin: 0 15px 0 15px;
-  margin: 0;
-  padding: 0 15px;
+// .main-content {
+//   animation: fadein 1s;
+//   background-color: $darkest-grey;
+//   color: $lightest-grey;
+//   font-family: 'Open Sans';
+//   margin: 0 15px 0 15px;
+//   margin: 0;
+//   padding: 0 15px;
 
-}
+// }
 
-.entry {
-  display: inline-flex;
-  justify-content: space-between;
-  width: 100%;
-}
+// .entry {
+//   display: inline-flex;
+//   justify-content: space-between;
+//   width: 100%;
+// }
 
