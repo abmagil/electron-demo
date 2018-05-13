@@ -8,8 +8,9 @@ const {
   number,
  } = PropTypes;
 
-const GoalList = ({ orderedGoals, cumulativeGoalSpending }) => (
+const GoalList = ({ orderedGoals, cumulativeGoalSpending, children }) => (
   <tbody>
+    {children}
     {orderedGoals.map((goal, idx) => (
       <GoalRowContainer
         goal={goal}

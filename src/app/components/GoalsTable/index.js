@@ -40,7 +40,27 @@ class GoalsTable extends React.Component {
         <GoalList
           orderedGoals={orderedGoals}
           cumulativeGoalSpending={cumulativeGoalSpending}
-        />
+        >
+          <tr>
+            <td>
+              <input placeholder="Description" />
+            </td>
+            <td>
+              <input placeholder="Cost" />
+            </td>
+            <td>
+              <input placeholder="Deadline" />
+            </td>
+            <td>
+              <input placeholder="Monthly Cost" />
+            </td>
+            <td>
+              <button>
+                Add
+              </button>
+            </td>
+          </tr>
+        </GoalList>
         <tfoot>
           <tr>
             <td colSpan="3" />

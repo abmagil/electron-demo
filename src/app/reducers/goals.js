@@ -41,6 +41,22 @@ const goal = (state = {}, action) => {
   };
 };
 
+const fullGoalFromPartial = (oldGoal) => {
+  const unsetAttribute = without(GOAL_ATTRIBUTES, ...Object.keys(oldGoal));
+
+  if (unsetAttribute.length > 1) {
+    throw new Error('Too Many Unset Attributes');
+  } else if (unsetAttribute.length === 1) {
+    const attrToCalculate = unsetAttribute[0];
+    const calculation = functionMap[attrToCalculate];
+
+    return {
+      ...oldGoal,
+      [attrToCalculate]: calculation(oldGoal),
+    };
+  }
+};
+
 const updateLocked = (state = {}, action) => {
   return {
     ...state,
@@ -53,23 +69,11 @@ export default function goals(state = {}, action) {
   case actions.ADD_GOAL: {
     let { goal: newGoal } = action;
 
-    const unsetAttribute = without(GOAL_ATTRIBUTES, ...Object.keys(newGoal));
-
-    if (unsetAttribute.length > 1) {
-      throw new Error('Too Many Unset Attributes');
-    } else if (unsetAttribute.length === 1) {
-      const attrToCalculate = unsetAttribute[0];
-      const calculation = functionMap[attrToCalculate];
-
-      newGoal = {
-        ...newGoal,
-        [attrToCalculate]: calculation(newGoal),
-      };
-    }
+    newGoal = fullGoalFromPartial(newGoal);
 
     return {
-      ...state,
       [newGoal.id]: newGoal,
+      ...state,
     };
   }
   case actions.UPDATE_GOAL: {

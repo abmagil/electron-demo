@@ -28666,6 +28666,19 @@ var goal = function goal() {
   return Object.assign({}, state, (_Object$assign2 = {}, _defineProperty(_Object$assign2, changingAttr, newVal), _defineProperty(_Object$assign2, attrToCalculate, calculation(Object.assign({}, state, _defineProperty({}, changingAttr, newVal)))), _Object$assign2));
 };
 
+var fullGoalFromPartial = function fullGoalFromPartial(oldGoal) {
+  var unsetAttribute = _without2.default.apply(undefined, [GOAL_ATTRIBUTES].concat(_toConsumableArray(Object.keys(oldGoal))));
+
+  if (unsetAttribute.length > 1) {
+    throw new Error('Too Many Unset Attributes');
+  } else if (unsetAttribute.length === 1) {
+    var attrToCalculate = unsetAttribute[0];
+    var calculation = functionMap[attrToCalculate];
+
+    return Object.assign({}, oldGoal, _defineProperty({}, attrToCalculate, calculation(oldGoal)));
+  }
+};
+
 var updateLocked = function updateLocked() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
   var action = arguments[1];
@@ -28685,18 +28698,9 @@ function goals() {
         var newGoal = action.goal;
 
 
-        var unsetAttribute = _without2.default.apply(undefined, [GOAL_ATTRIBUTES].concat(_toConsumableArray(Object.keys(newGoal))));
+        newGoal = fullGoalFromPartial(newGoal);
 
-        if (unsetAttribute.length > 1) {
-          throw new Error('Too Many Unset Attributes');
-        } else if (unsetAttribute.length === 1) {
-          var attrToCalculate = unsetAttribute[0];
-          var calculation = functionMap[attrToCalculate];
-
-          newGoal = Object.assign({}, newGoal, _defineProperty({}, attrToCalculate, calculation(newGoal)));
-        }
-
-        return Object.assign({}, state, _defineProperty({}, newGoal.id, newGoal));
+        return Object.assign(_defineProperty({}, newGoal.id, newGoal), state);
       }
     case actions.UPDATE_GOAL:
       {
@@ -48119,10 +48123,12 @@ var arrayOf = _propTypes2.default.arrayOf,
 
 var GoalList = function GoalList(_ref) {
   var orderedGoals = _ref.orderedGoals,
-      cumulativeGoalSpending = _ref.cumulativeGoalSpending;
+      cumulativeGoalSpending = _ref.cumulativeGoalSpending,
+      children = _ref.children;
   return _react2.default.createElement(
     'tbody',
     null,
+    children,
     orderedGoals.map(function (goal, idx) {
       return _react2.default.createElement(_GoalRowContainer2.default, {
         goal: goal,
@@ -48310,10 +48316,46 @@ var GoalsTable = function (_React$Component) {
             )
           )
         ),
-        _react2.default.createElement(_GoalList2.default, {
-          orderedGoals: orderedGoals,
-          cumulativeGoalSpending: cumulativeGoalSpending
-        }),
+        _react2.default.createElement(
+          _GoalList2.default,
+          {
+            orderedGoals: orderedGoals,
+            cumulativeGoalSpending: cumulativeGoalSpending
+          },
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement('input', { placeholder: 'Description' })
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement('input', { placeholder: 'Cost' })
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement('input', { placeholder: 'Deadline' })
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement('input', { placeholder: 'Monthly Cost' })
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              _react2.default.createElement(
+                'button',
+                null,
+                'Add'
+              )
+            )
+          )
+        ),
         _react2.default.createElement(
           'tfoot',
           null,
@@ -48570,17 +48612,32 @@ var _GoalsTable = __webpack_require__(552);
 
 var _GoalsTable2 = _interopRequireDefault(_GoalsTable);
 
-var _goals = __webpack_require__(266);
+var _goals = __webpack_require__(547);
+
+var _goals2 = __webpack_require__(266);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    orderedGoals: (0, _goals.orderedGoalsFrom)(state)
+    orderedGoals: (0, _goals2.orderedGoalsFrom)(state)
   };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, {})(_GoalsTable2.default);
+var mapDispatchToProps = function mapDispatchToProps(dispatch, ownProps) {
+  return {
+    maybeAddGoal: function maybeAddGoal(_ref) {
+      var description = _ref.description,
+          cost = _ref.cost,
+          deadline = _ref.deadline,
+          monthlyCost = _ref.monthlyCost;
+
+      (0, _goals.addGoal)();
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_GoalsTable2.default);
 
 /***/ }),
 /* 558 */
