@@ -1,7 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {identity} from 'lodash';
 import GoalList from '../GoalList';
 import cdf from '../../utils/cdf';
 import './GoalsTable.scss';
+
+const { func } = PropTypes;
 
 const cumulativeGoalSpendingFor = (goals) => (
   cdf(goals.map((goal) => (goal.spendingPerMonth)))
@@ -10,21 +14,40 @@ const cumulativeGoalSpendingFor = (goals) => (
 class GoalsTable extends React.Component {
   constructor(props) {
     super(props);
+    this.onClick = this.props.maybeAddGoal.bind(this);
+    const changeHandler = this.props.makeGoalComplete(identity);
+    this.onChange = (event) => {
+      const { target } = event;
+      const newData = changeHandler({
+        ...this.state.goalData,
+        [target.name]: target.value,
+      });
+      this.setState({
+        goalData: newData,
+      });
+    };
+
     this.state = {
       cumulativeGoalSpending: [],
+      goalData: {
+        type: '',
+        goalTotal: '',
+        deadlineYear: '',
+        spendingPerMonth: '',
+      },
     };
   }
 
   componentWillReceiveProps(nextProps) {
     const { orderedGoals } = nextProps;
-    this.state = {
+    this.setState({
       cumulativeGoalSpending: cumulativeGoalSpendingFor(orderedGoals),
-    };
+    });
   }
 
   render() {
     const { orderedGoals } = this.props;
-    const { cumulativeGoalSpending } = this.state;
+    const { cumulativeGoalSpending, goalData } = this.state;
     
     return (
       <table className='goalsTable'>
@@ -43,19 +66,42 @@ class GoalsTable extends React.Component {
         >
           <tr>
             <td>
-              <input placeholder="Description" />
+              <input
+                name="type"
+                placeholder="Description" 
+                value={goalData.type}
+                onChange={this.onChange}
+              />
             </td>
             <td>
-              <input placeholder="Cost" />
+              <input
+                name="goalTotal"
+                placeholder="Cost"
+                value={goalData.goalTotal}
+                onChange={this.onChange}
+                type="number"
+              />
             </td>
             <td>
-              <input placeholder="Deadline" />
+              <input
+                name="deadlineYear"
+                placeholder="Deadline"
+                value={goalData.deadlineYear}
+                onChange={this.onChange}
+              />
             </td>
             <td>
-              <input placeholder="Monthly Cost" />
+              <input
+                name="spendingPerMonth"
+                placeholder="Monthly Cost"
+                value={goalData.spendingPerMonth}
+                onChange={this.onChange}
+              />
             </td>
             <td>
-              <button>
+              <button
+                onClick={() => this.onClick(goalData)}
+              >
                 Add
               </button>
             </td>
@@ -76,11 +122,13 @@ class GoalsTable extends React.Component {
 }
 
 GoalsTable.propTypes = {
+  maybeAddGoal: func,
   orderedGoals: GoalList.propTypes.orderedGoals,
 };
 
 GoalsTable.defaultProps = {
   orderedGoals: [],
+  maybeAddGoal: identity,
 };
 
 export default GoalsTable;

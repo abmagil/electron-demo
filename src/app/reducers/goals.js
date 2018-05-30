@@ -4,6 +4,7 @@ import without from 'lodash/without';
 
 import * as actions from '../constants/ActionTypes';
 import * as calculated from '../utils/attr-relationships';
+import partialToCompleteGoal from '../utils/partial-to-complete-goal';
 
 export const GOAL_ATTRIBUTES = [
   'goalTotal',
@@ -41,21 +42,9 @@ const goal = (state = {}, action) => {
   };
 };
 
-const fullGoalFromPartial = (oldGoal) => {
-  const unsetAttribute = without(GOAL_ATTRIBUTES, ...Object.keys(oldGoal));
-
-  if (unsetAttribute.length > 1) {
-    throw new Error('Too Many Unset Attributes');
-  } else if (unsetAttribute.length === 1) {
-    const attrToCalculate = unsetAttribute[0];
-    const calculation = functionMap[attrToCalculate];
-
-    return {
-      ...oldGoal,
-      [attrToCalculate]: calculation(oldGoal),
-    };
-  }
-};
+const fullGoalFromPartial = partialToCompleteGoal((goalData) => {
+  throw new Error(`Too many unset attributes for goal ${goalData.id}`);
+});
 
 const updateLocked = (state = {}, action) => {
   return {
@@ -70,10 +59,9 @@ export default function goals(state = {}, action) {
     let { goal: newGoal } = action;
 
     newGoal = fullGoalFromPartial(newGoal);
-
     return {
-      [newGoal.id]: newGoal,
       ...state,
+      [newGoal.id]: newGoal,
     };
   }
   case actions.UPDATE_GOAL: {

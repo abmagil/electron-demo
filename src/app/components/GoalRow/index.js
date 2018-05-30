@@ -39,7 +39,7 @@ const GoalRow = ({ goal,spendingSummary, onUpClick, onDownClick }) => (
 
 GoalRow.propTypes = {
   goal: shape({
-    id: number.isRequired,
+    id: string.isRequired,
     goalTotal: number.isRequired,
     deadlineYear: number.isRequired,
     spendingPerMonth: number.isRequired,

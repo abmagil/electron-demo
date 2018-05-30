@@ -1,7 +1,9 @@
 // import { Map, fromJS } from 'immutable';
-import { createStore, combineReducers } from 'redux';
+import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 
 import defaultCategories from './default-categories';
+
+import ensureGoalsHaveId from './middlewares/all-goals-have-id';
 
 import availableCash from './reducers/available-cash';
 import goals from './reducers/goals';
@@ -19,7 +21,7 @@ const initialState = {
   spending: defaultCategories(),
   goals: {
     '1': {
-      id: 1,
+      id: '1',
       type: 'Emergency Goal',
       goalTotal: 1200,
       spendingPerMonth: 10,
@@ -28,7 +30,7 @@ const initialState = {
       deadlineYear: 2028,
     },
     '2': {
-      id: 2,
+      id: '2',
       type: 'Education Goal',
       deadlineYear: 2038,
       spendingPerMonth: 100,
@@ -37,7 +39,7 @@ const initialState = {
       goalTotal: 23800,
     },
     '3': {
-      id: 3,
+      id: '3',
       type: 'Travel Goal',
       goalTotal: 12000,
       deadlineYear: new Date().getFullYear() + 6,
@@ -54,10 +56,15 @@ const initialState = {
   availableCash: 400,
 };
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
   reducer,
   initialState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeEnhancers(
+    applyMiddleware(ensureGoalsHaveId)
+  )
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 export default store;

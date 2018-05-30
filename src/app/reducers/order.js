@@ -5,8 +5,8 @@ function order(state = [], action) {
   switch (action.type) {
   case actionTypes.ADD_GOAL: {
     return [
-      ...state,
       action.goal.id,
+      ...state,
     ];
   }
   case actionTypes.GOAL_MOVE_UP: {
