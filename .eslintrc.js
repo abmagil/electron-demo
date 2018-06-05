@@ -4,7 +4,14 @@ module.exports = {
         "es6": true,
         "node": true
     },
-    "extends": ["airbnb", "eslint:recommended", "plugin:react/recommended"],
+    "extends": [
+        "airbnb",
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:flowtype/recommended"],
+    "plugins": [
+        "flowtype"
+    ],
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,

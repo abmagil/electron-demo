@@ -7,7 +7,8 @@
     "start": "electron .",
     "build:watch": "webpack --watch --progress",
     "build": "webpack --progress",
-    "test": "jest"
+    "test": "jest",
+    "tsc": "tsc"
   },
   "author": "Aaron Magil",
   "license": "ISC",
@@ -20,6 +21,7 @@
     "d3-transition": "^1.1.1",
     "electron": "^1.6.2",
     "electron-prebuilt": "^1.4.13",
+    "flow-bin": "^0.73.0",
     "immutable": "^3.8.2",
     "javascript-state-machine": "^3.0.1",
     "jubilation": "file:../jubilation",
@@ -34,6 +36,7 @@
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
+    "babel-eslint": "^8.2.3",
     "babel-jest": "^20.0.0",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
@@ -46,6 +49,7 @@
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-loader": "^1.7.1",
+    "eslint-plugin-flowtype": "^2.49.3",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
