@@ -1,4 +1,4 @@
-// import { Map, fromJS } from 'immutable';
+/* @flow */
 import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 
 import defaultCategories from './default-categories';
@@ -17,7 +17,7 @@ const reducer = combineReducers({
   availableCash,
 });
 
-const initialState = {
+const initialState: StateShape = {
   spending: defaultCategories(),
   goals: {
     '1': {
@@ -58,13 +58,13 @@ const initialState = {
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(
+const store: StateShape = createStore(
   reducer,
   initialState,
   composeEnhancers(
     applyMiddleware(ensureGoalsHaveId)
   )
-  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+
 
 export default store;

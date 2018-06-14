@@ -12,7 +12,7 @@ describe('reducers', () => {
         type: `${actions.ADD_GOAL}`, goal: {
           id: 1337, type: 'Emergency Goal', total: 100, deadline: 1999, spendingPerMonth: 15
         }
-      })).toEqual([1, 2, 3, 1337])
+      })).toEqual([1337, 1, 2, 3])
     })
 
     it(`should handle ${actions.GOAL_MOVE_UP} action below the first element`, () => {

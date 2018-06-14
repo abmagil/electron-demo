@@ -12,6 +12,7 @@ module.exports = {
     "plugins": [
         "flowtype"
     ],
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,

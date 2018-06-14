@@ -1,6 +1,7 @@
+// @flow
 import { UPDATE_CASH } from '../constants/ActionTypes';
 
-const availableCash = (state = 0, action) => {
+const availableCash = (state: number = 0, action: UpdateCashAction) => {
   const { availableCash } = action;
   switch (action.type) {
   case UPDATE_CASH:
@@ -9,5 +10,6 @@ const availableCash = (state = 0, action) => {
     return state;
   }
 };
+
 export default availableCash;
-export const availableCashFrom = (state) => (state.availableCash);
+export const availableCashFrom = (state: StateShape): number => (state.availableCash);

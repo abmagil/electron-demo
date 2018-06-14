@@ -56,7 +56,7 @@ const updateLocked = (state = {}, action) => {
 export default function goals(state = {}, action) {
   switch (action.type) {
   case actions.ADD_GOAL: {
-    let { goal: newGoal } = action;
+    let newGoal = action.goal;
 
     newGoal = fullGoalFromPartial(newGoal);
     return {

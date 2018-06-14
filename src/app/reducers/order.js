@@ -1,15 +1,17 @@
+// @flow
 import * as actionTypes from '../constants/ActionTypes';
 
-function order(state = [], action) {
-  const goalIdx = state.indexOf(action.id);
+type OrderAction = AddGoalAction | MoveGoalUpAction | MoveGoalDownAction
+function order(state: Array<number> = [], action: OrderAction) {
   switch (action.type) {
-  case actionTypes.ADD_GOAL: {
+  case 'GOAL:ADD': {
     return [
       action.goal.id,
       ...state,
     ];
   }
   case actionTypes.GOAL_MOVE_UP: {
+    const goalIdx: number = state.indexOf(action.id);
     if (goalIdx <= 0) { // guard both non-existent element and first element
       return state;
     }
@@ -22,6 +24,7 @@ function order(state = [], action) {
     ];
   }
   case actionTypes.GOAL_MOVE_DOWN: {
+    const goalIdx: number = state.indexOf(action.id);
     if ((goalIdx < 0) || (goalIdx == state.length - 1)) {
       return state;
     }
