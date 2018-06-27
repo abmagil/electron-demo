@@ -4,7 +4,15 @@ import PropTypes from 'prop-types';
 import DebouncedComponent from '../DebouncedComponent';
 import NumericInput from '../NumericInput';
 import './GoalAttribute.scss';
-import Lock from '../../assets/svg/locked.svg';
+// import Lock from '../../assets/svg/locked.svg';
+
+const Lock = ({className, alt, onClick}) => (
+  <div
+    className={className}
+    alt={alt}
+    onClick={onClick}
+  />
+);
 
 const GoalAttribute = ({ isLocked, value, lockedHandler, updateHandler }) => {
   return (

@@ -17,13 +17,13 @@ const simpleExpect = {
   ],
   links: [
     {
-      source: 'basic',
-      target: 'total',
+      target: 'basic',
+      source: 'total',
       value: 1,
     },
     {
-      source: 'simple',
-      target: 'total',
+      target: 'simple',
+      source: 'total',
       value: 2,
     },
   ],
@@ -45,13 +45,13 @@ const singleNestExpect = {
   ],
   links: [
     {
-      source: 'cat3',
-      target: 'cat2',
+      target: 'cat3',
+      source: 'cat2',
       value: 200,
     },
     {
-      source: 'cat2',
-      target: 'cat1',
+      target: 'cat2',
+      source: 'cat1',
       value: 200,
     },
   ],
@@ -88,38 +88,38 @@ const expected = {
   ],
   links: [
     {
-      source: 'subcat2',
-      target: 'mainCat',
+      target: 'subcat2',
+      source: 'mainCat',
       value: 100,
     },
     {
-      source: 'subcat3',
-      target: 'mainCat',
+      target: 'subcat3',
+      source: 'mainCat',
       value: 201,
     },
     {
-      source: 'subcat4',
-      target: 'subcat3',
+      target: 'subcat4',
+      source: 'subcat3',
       value: 200,
     },
     {
-      source: 'subcat5',
-      target: 'subcat3',
+      target: 'subcat5',
+      source: 'subcat3',
       value: 1,
     },
     {
-      source: 'subcat6',
-      target: 'secondCat',
+      target: 'subcat6',
+      source: 'secondCat',
       value: 300,
     },
     {
-      source: 'mainCat',
-      target: 'total',
+      target: 'mainCat',
+      source: 'total',
       value: 301,
     },
     {
-      source: 'secondCat',
-      target: 'total',
+      target: 'secondCat',
+      source: 'total',
       value: 300,
     },
   ],

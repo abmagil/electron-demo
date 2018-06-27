@@ -46,7 +46,7 @@ describe('components', () => {
   it('fires the lockedHandler when the lock icon is click', () => {
     const { wrapper, props: { lockedHandler }} = setup();
     wrapper.setProps({ isLocked: false });
-    wrapper.find('img').simulate('click');
+    wrapper.find('Lock').simulate('click');
 
     expect(lockedHandler).toHaveBeenCalled();
   });

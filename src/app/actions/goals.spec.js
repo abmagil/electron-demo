@@ -15,6 +15,8 @@ describe('addGoal', () => {
   });
 
   it('should default the current year as the startingYear',() => {
-    expect(addGoal({}).goal).toEqual({ startingYear: new Date() });
+    const goal = addGoal({}).goal;
+    
+    expect(goal.startingYear / 1000).toBeCloseTo(Date.now() / 1000, 2);
   });
 });

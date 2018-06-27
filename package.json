@@ -13,6 +13,9 @@
   "author": "Aaron Magil",
   "license": "ISC",
   "dependencies": {
+    "@types/lodash": "^4.14.110",
+    "@types/react": "^16.4.3",
+    "@types/react-redux": "^6.0.3",
     "classnames": "^2.2.5",
     "d3-format": "^1.2.1",
     "d3-sankey": "^0.7.1",
@@ -21,8 +24,6 @@
     "d3-transition": "^1.1.1",
     "electron": "^1.6.2",
     "electron-prebuilt": "^1.4.13",
-    "flow-bin": "^0.73.0",
-    "immutable": "^3.8.2",
     "javascript-state-machine": "^3.0.1",
     "jubilation": "file:../jubilation",
     "lodash": "^4.17.4",
@@ -32,6 +33,7 @@
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
     "redux": "^3.6.0",
+    "ts-loader": "^4.4.2",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
@@ -54,6 +56,7 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
     "file-loader": "^0.11.1",
+    "flow-bin": "^0.73.0",
     "html-webpack-plugin": "^2.28.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^20.0.0",
@@ -61,10 +64,11 @@
     "npm": "^4.6.1",
     "pug": "^2.0.0-beta.12",
     "pug-loader": "^2.3.0",
-    "react-svg-loader": "^1.1.1",
+    "react-svg-loader": "^2.1.0",
     "react-test-renderer": "^15.5.4",
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
+    "typescript": "^2.9.2",
     "webpack": "^2.3.3"
   },
   "jest": {

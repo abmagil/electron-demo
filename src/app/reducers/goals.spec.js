@@ -58,11 +58,11 @@ describe('reducers', () => {
 
         const willThrow = () => {
           goals({}, { type: `${actions.ADD_GOAL}`, goal: inputGoal});
-        }
+        };
 
-        expect(willThrow).toThrowError('Too Many Unset Attributes');
+        expect(willThrow).toThrowError('Too many unset attributes for goal 1');
       });
-    })
+    });
     describe(`on an ${actions.UPDATE_GOAL} action`, () => {
       describe('for an outlay-locked goal', () => {
         const outlayLockedGoal = {
@@ -89,8 +89,8 @@ describe('reducers', () => {
             ...outlayLockedGoal['3'],
             goalTotal: 480,
             deadlineYear: 2024
-          })
-        })
+          });
+        });
         it(`should change goalTotal and adjust deadlineYear`, () => {
           const newState = goals(outlayLockedGoal, {
             type: `${actions.UPDATE_GOAL}`,
@@ -103,9 +103,9 @@ describe('reducers', () => {
             ...outlayLockedGoal['3'],
             goalTotal: 120,
             deadlineYear: 2021,
-          })
-        })
-      })
+          });
+        });
+      });
 
       describe('for a total-locked goal', () => {
         const totalLockedGoal = {
@@ -141,8 +141,8 @@ describe('reducers', () => {
 
           expect(newState['1']['deadlineYear']).toEqual(2021);
           expect(newState['1']['spendingPerMonth']).toBe(20);
-        })
-      })
+        });
+      });
 
       describe('for a deadline-locked goal', () => {
         const deadlineLockedGoal = {
@@ -170,7 +170,7 @@ describe('reducers', () => {
             spendingPerMonth: 20,
             goalTotal: 480
           });
-        })
+        });
         it(`should change goalTotal and adjust the spendingPerMonth`, () => {
           const newState = goals(deadlineLockedGoal, {
             type: `${actions.UPDATE_GOAL}`,
@@ -184,8 +184,8 @@ describe('reducers', () => {
             spendingPerMonth: 5,
             goalTotal: 120
           });
-        })
-      })
+        });
+      });
     });
 
     describe(`on an ${actions.UPDATE_LOCKED} action`, () => {
@@ -207,7 +207,7 @@ describe('reducers', () => {
           ...initialState['1'],
           lockedAttr: 'deadlineYear',
         });
-      })
+      });
     });
-  })
-})
+  });
+});

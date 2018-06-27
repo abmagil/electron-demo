@@ -24,7 +24,7 @@ const GoalRow = ({ goal,spendingSummary, onUpClick, onDownClick }) => (
     <GoalAttrContainer attrName={'spendingPerMonth'} goalID={goal.id} />
     <td className='cell move'>
       <ActionButton
-        classNames={['up']}
+        classNames={['up']} 
         onClick={() => onUpClick(goal.id)}
         altText='increase priority'
       />

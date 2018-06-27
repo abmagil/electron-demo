@@ -2,8 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNamesLib from 'classnames';
 
-import Chevron from '../../../assets/svg/chevron.svg';
+// import Chevron from '../../../assets/svg/chevron.svg';
 import './ActionButton.scss';
+
+const Chevron = () => (<svg />);
 
 const ActionButton = ({onClick, altText, classNames=['']}) => {
   const btnClass = classNamesLib('actionButton', ...classNames);

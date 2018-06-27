@@ -1,7 +1,7 @@
 import uuidV1 from 'uuid/v1';
 import { ADD_GOAL } from '../constants/ActionTypes';
 
-
+// eslint-disable-next-line no-unused-vars
 const ensureGoalsHaveIds = store => next => action => {
   // console.log(action);
   // next(action);

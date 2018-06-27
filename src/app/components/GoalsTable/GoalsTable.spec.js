@@ -5,13 +5,14 @@ import React from 'react';
 function setup() {
   const props = {
     orderedGoals: [],
-    cumulativeGoalSpending: []
-  } 
+    cumulativeGoalSpending: [],
+    makeGoalComplete: jest.fn(),
+  };
   const wrapper = shallow(<GoalsTable {...props} />);
 
   return {
-    wrapper
-  }
+    wrapper,
+  };
 }
 
 describe('components', () => {
@@ -28,12 +29,12 @@ describe('components', () => {
 
       wrapper.setProps({
         orderedGoals: [
-          {id: 1, goalTotal: 100, deadlineYear: 2059, spendingPerMonth: 40},
-          {id: 1, goalTotal: 100, deadlineYear: 2059, spendingPerMonth: 40},
-          {id: 1, goalTotal: 100, deadlineYear: 2059, spendingPerMonth: 40},
-        ]
-      })
+          {id: '1', goalTotal: 100, deadlineYear: 2059, spendingPerMonth: 40},
+          {id: '1', goalTotal: 100, deadlineYear: 2059, spendingPerMonth: 40},
+          {id: '1', goalTotal: 100, deadlineYear: 2059, spendingPerMonth: 40},
+        ],
+      });
       expect(wrapper.find('.goalsTable__total').text()).toEqual('120');
-    })
+    });
   });
-})
+});
