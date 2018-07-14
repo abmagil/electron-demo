@@ -1,14 +1,15 @@
+// @flow
 import {
   ADD_CATEGORY,
   UPDATE_SPENDING
 } from '../constants/ActionTypes';
 
-const addCategory = (categoryName) => ({
+const addCategory = (categoryName: string): any => ({
   type: ADD_CATEGORY,
   value: categoryName,
 });
 
-const updateCategorySpending = (categoryName, newSpendingValue) => ({
+const updateCategorySpending = (categoryName: string, newSpendingValue: number): any => ({
   type: UPDATE_SPENDING,
   value: newSpendingValue,
   categoryName,

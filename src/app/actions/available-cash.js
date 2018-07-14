@@ -1,5 +1,6 @@
+// @flow
 import { UPDATE_CASH } from '../constants/ActionTypes';
 
-const setAvailableCash = (availableCash) => ({type: UPDATE_CASH, availableCash});
+const setAvailableCash = (availableCash: number): UpdateCashAction => ({type: UPDATE_CASH, availableCash});
 
 export default setAvailableCash;
