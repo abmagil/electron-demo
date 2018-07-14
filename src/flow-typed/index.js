@@ -12,6 +12,8 @@ export type Goal = {
   +deadlineYear: number;
 };
 
+export type GoalEditableAttribute = 'goalTotal' | 'spendingPerMonth' | 'startingYear' | 'deadlineYear'
+
 export type ObjectOf<T> = {
   [string]: T
 };
@@ -20,7 +22,7 @@ type SpendingTree = number | ObjectOf<SpendingTree>;
 type StateShape = {
   +spending: SpendingTree;
   +goals: ObjectOf<Goal>;
-  +order: Array<number>;
+  +order: Array<string>;
   +availableCash: number;
 };
 
@@ -49,6 +51,40 @@ export type MoveGoalDownAction = {
   ...Action;
   type: 'GOAL:MOVE_DOWN';
   +id: string;
+}
+
+export type RemoveGoalAction = {
+  ...Action;
+  type: 'GOAL:REMOVE'
+}
+
+export type ActionForGoalData = {
+  goalID: string;
+  attrName: GoalEditableAttribute;
+}
+
+export type SetLockedGoalAction = {
+  +goalID: string;
+  attrName: GoalEditableAttribute;
+  type: 'GOAL:UPDATE:LOCKED'
+};
+
+export type UpdateGoalActionData = {
+  +goalID: string,
+  +attrName: GoalEditableAttribute,
+  +newVal: number | string,
+}
+
+export type UpdateGoalAction = {
+  +goalID: string,
+  +attrName: GoalEditableAttribute,
+  +newVal: number | string,
+  type: 'GOAL:UPDATE';
+}
+
+export type ActionForGoal = {
+  type: actionTypes.UPDATE_LOCKED;
+  ...ActionForGoal
 }
 
 export type UpdateSpendingAction = {

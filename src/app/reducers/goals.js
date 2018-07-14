@@ -1,9 +1,11 @@
+// @flow
 import sum from 'lodash/sum';
 import orderBy from 'lodash/orderBy';
 import without from 'lodash/without';
 
 import * as actions from '../constants/ActionTypes';
 import * as calculated from '../utils/attr-relationships';
+
 import partialToCompleteGoal from '../utils/partial-to-complete-goal';
 
 export const GOAL_ATTRIBUTES = [
@@ -13,7 +15,7 @@ export const GOAL_ATTRIBUTES = [
 ];
 
 // without returns an array, hence the [0]
-function remainingAttr(attr1, attr2) {
+function remainingAttr(attr1: string, attr2: string): string {
   const remainingAttr = without(GOAL_ATTRIBUTES, attr1, attr2)[0];
 
   return remainingAttr;
@@ -25,12 +27,16 @@ const functionMap = {
   spendingPerMonth: calculated.spendingPerMonth,
 };
 
-const goal = (state = {}, action) => {
+const goal = (state: Goal, action: UpdateGoalAction) => {
   const { attrName: changingAttr, newVal} = action;
   const { lockedAttr } = state;
   const attrToCalculate = remainingAttr(lockedAttr, changingAttr);
   const calculation = functionMap[attrToCalculate];
-  if (action.key !== state.key) { throw new Error('How did you hit this?'); }
+
+  if (!(changingAttr && attrToCalculate)) {
+    console.log('Missing Information');
+    return state;
+  }
 
   return {
     ...state,
@@ -46,16 +52,18 @@ const fullGoalFromPartial = partialToCompleteGoal((goalData) => {
   throw new Error(`Too many unset attributes for goal ${goalData.id}`);
 });
 
-const updateLocked = (state = {}, action) => {
+const updateLocked = (state: Goal, action: SetLockedGoalAction): Goal => {
   return {
     ...state,
     lockedAttr: action.attrName,
   };
 };
 
-export default function goals(state = {}, action) {
+export default function goals(
+  state: ObjectOf<Goal> = {},
+  action: AddGoalAction | UpdateGoalAction | SetLockedGoalAction): ObjectOf<Goal> {
   switch (action.type) {
-  case actions.ADD_GOAL: {
+  case 'GOAL:ADD': {
     let newGoal = action.goal;
 
     newGoal = fullGoalFromPartial(newGoal);
@@ -64,18 +72,18 @@ export default function goals(state = {}, action) {
       [newGoal.id]: newGoal,
     };
   }
-  case actions.UPDATE_GOAL: {
+  case 'GOAL:UPDATE:LOCKED': {
+    const uGoal: Goal = state[action.goalID];
+    return {
+      ...state,
+      [action.goalID]: updateLocked(uGoal, action),
+    };
+  }
+  case 'GOAL:UPDATE': {
     const updateGoal = state[action.goalID];
     return {
       ...state,
       [action.goalID]: goal(updateGoal, action),
-    };
-  }
-  case actions.UPDATE_LOCKED: {
-    const uGoal = state[action.goalID];
-    return {
-      ...state,
-      [action.goalID]: updateLocked(uGoal, action),
     };
   }
   default:
@@ -83,15 +91,15 @@ export default function goals(state = {}, action) {
   }
 }
 
-export const orderedGoalsFrom = (state) => (
-  state.order.map((goalId) => (state.goals[goalId])) || []
+export const orderedGoalsFrom = (state: StateShape): Array<Goal> => (
+  state.order.map((goalId: string) => (state.goals[goalId])) || []
 );
 
-export const totalGoalSpendingFrom = (state) => {
+export const totalGoalSpendingFrom = (state: StateShape): number => {
   const objectValues = Object.keys(state.goals).map((key) => state.goals[key]);
   return sum(objectValues.map((goal) => (goal.spendingPerMonth)));
 };
 
-export const completionOrderedGoalsFrom = (state) => {
+export const completionOrderedGoalsFrom = (state: StateShape): Array<Goal> => {
   return orderBy(state.goals, ['deadlineYear', 'spendingPerMonth']);
 };

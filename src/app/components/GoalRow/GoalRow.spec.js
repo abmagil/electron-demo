@@ -24,7 +24,7 @@ function setup() {
 
 describe('components', () => {
   describe('<GoalRow />', () => {
-    it(`should fire the passed onUpClick with the goal ID when the "Up" button is pressed`, () => {
+    it.only(`should fire the passed onUpClick with the goal ID when the "Up" button is pressed`, () => {
       const { wrapper, props } = setup();
       wrapper.find('.up').simulate('click');
 

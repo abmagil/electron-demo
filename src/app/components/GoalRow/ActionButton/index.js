@@ -15,6 +15,7 @@ const ActionButton = ({onClick, altText, classNames=['']}) => {
       className={btnClass}
       onClick={onClick}
     >
+      {altText}
       <Chevron alt={altText} />
     </button>
   );

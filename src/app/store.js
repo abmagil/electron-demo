@@ -49,9 +49,9 @@ const initialState: StateShape = {
     },
   },
   order: [
-    3,
-    2,
-    1,
+    '3',
+    '2',
+    '1',
   ],
   availableCash: 400,
 };

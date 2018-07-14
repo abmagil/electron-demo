@@ -2,7 +2,7 @@
 import * as actionTypes from '../constants/ActionTypes';
 
 type OrderAction = AddGoalAction | MoveGoalUpAction | MoveGoalDownAction
-function order(state: Array<number> = [], action: OrderAction) {
+function order(state: Array<string> = [], action: OrderAction): Array<string> {
   switch (action.type) {
   case 'GOAL:ADD': {
     return [
