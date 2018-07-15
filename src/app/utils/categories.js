@@ -1,12 +1,16 @@
+//@flow
+
 import entries from 'lodash/entries';
 import isNumber from 'lodash/isNumber';
 import merge from 'lodash/merge';
 import tail from 'lodash/tail';
 
 // (k, v) => {k: v|{}}
-const nestObject = (key, value) => {
+type CategorySpendingType = ObjectOf<number|CategorySpendingType>
+
+const nestObject = (key: string, value: ObjectOf<number>): CategorySpendingType => {
   const splitKey = key.split(/\./);
-  
+
   if(tail(splitKey).length == 0) {
     return {
       [splitKey[0]]: value,
@@ -21,7 +25,7 @@ const nestObject = (key, value) => {
   }
 };
 
-export const flatToNested = (flatStructure) => {
+export const flatToNested = (flatStructure: ObjectOf<number>): CategorySpendingType => {
   const listOfObjects = entries(flatStructure).map((entry) => {
     return nestObject(entry[0], entry[1]);
   });
@@ -39,7 +43,7 @@ const flattenObject = (into, keyArr, value) => {
   }
 };
 
-export const nestedToFlat = (nestedStructure) => {
+export const nestedToFlat = (nestedStructure: CategorySpendingType): ObjectOf<number> => {
   let built = {};
 
   entries(nestedStructure).forEach(([key, value]) => {
