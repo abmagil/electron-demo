@@ -1,3 +1,5 @@
+//@flow
+
 import {
   isNumber,
   size,
@@ -7,8 +9,8 @@ import {
 
 const toNode = (nodeName) => ({name: nodeName});
 
-const calculateLayer = (parent, key, value, nodeSet, linkSet) => {
-  let weight = 0;
+const calculateLayer = (parent: null|string, key: string, value, nodeSet, linkSet): number => {
+  let weight: number = 0;
   if (isNumber(value)) {
     weight = value;
   } else {
@@ -30,7 +32,15 @@ const calculateLayer = (parent, key, value, nodeSet, linkSet) => {
   return weight; // weight for entire layer
 };
 
-export default (data) => {
+type NodeType = {name: string}
+
+type LinkType = {source: null|string, target: string, value: number}
+
+type SankeyOutputDataType = {nodes: Array<NodeType>, links: Array<LinkType>}
+
+type SankeyInputDataType = ObjectOf<number|SankeyInputDataType>
+
+export default (data: SankeyInputDataType): SankeyOutputDataType => {
   let rootedData; // function requires a single root node
   if(size(data) !== 1) {
     rootedData = {
@@ -39,10 +49,10 @@ export default (data) => {
   } else {
     rootedData = data;
   }
-  
+
   const nodeSet = new Set();
   const linkSet = new Set();
-  const root = Object.keys(rootedData)[0];
+  const root: string = Object.keys(rootedData)[0];
   calculateLayer(null, root, rootedData[root], nodeSet, linkSet);
 
   return {
