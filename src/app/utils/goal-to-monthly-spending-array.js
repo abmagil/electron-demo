@@ -1,7 +1,12 @@
+//@flow
+
 import isFinite from 'lodash/isFinite';
 
 // Ingest a goal, return an array of monthly spending, each index is cumulative
-export default function goalToMonthlySpendingArray({ goalTotal, spendingPerMonth } = {}) {
+
+type GoalSpendingType = {goalTotal: number, spendingPerMonth: number}
+
+export default function goalToMonthlySpendingArray({ goalTotal, spendingPerMonth }: GoalSpendingType = {}): Array<number> {
   const isValid = isFinite(goalTotal) && isFinite(spendingPerMonth);
 
   let spendingArray = [];
