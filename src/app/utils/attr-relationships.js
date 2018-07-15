@@ -1,3 +1,5 @@
+//@flow
+
 import moment from 'moment';
 
 // Calculates distance to the end of given year
@@ -14,7 +16,9 @@ function monthsOfSpending({ goalTotal, spendingPerMonth }) {
   return Math.ceil(goalTotal / spendingPerMonth);
 }
 
-export function total({ spendingPerMonth, deadlineYear, startingYear=moment().year() }) {
+type totalType={spendingPerMonth: number, deadlineYear: number, startingYear: number}
+
+export function total({ spendingPerMonth, deadlineYear, startingYear=moment().year() }: totalType): number {
   const deadlineMoment = moment(deadlineYear, 'Y');
   const startingMoment = moment(startingYear, 'Y');
   if (deadlineMoment < startingMoment) { return 0; }
@@ -24,7 +28,9 @@ export function total({ spendingPerMonth, deadlineYear, startingYear=moment().ye
   return spendingPerMonth * spendingMonths;
 }
 
-export function spendingPerMonth({ goalTotal, deadlineYear, startingYear=moment().year() }) {
+type spendingPerMonthType={goalTotal: number, deadlineYear: number, startingYear: number}
+
+export function spendingPerMonth({ goalTotal, deadlineYear, startingYear=moment().year() }: spendingPerMonthType): number {
   const deadlineMoment = moment(deadlineYear, 'Y');
   const startingMoment = moment(startingYear, 'Y');
   const spendingMonths = monthsUntil({deadlineMoment, startingMoment});
@@ -37,7 +43,9 @@ export function spendingPerMonth({ goalTotal, deadlineYear, startingYear=moment(
 }
 
 // Built in assumption that answer is "in year XXXX", i.e. by the end of XXXX
-export function endYear({ goalTotal, spendingPerMonth, startingYear=moment().year() }) {
+type endYearType={goalTotal: number, spendingPerMonth: number, startingYear: number}
+
+export function endYear({ goalTotal, spendingPerMonth, startingYear=moment().year() }: endYearType): number {
   const startingMoment = moment(startingYear, 'Y');
   const calculatedMonths = monthsOfSpending({goalTotal, spendingPerMonth});
 
